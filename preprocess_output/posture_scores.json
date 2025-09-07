@@ -1,0 +1,12 @@
+[
+  {
+    "file": "preprocess_output/video_frames/20250903_125923_frames.npy",
+    "posture_score": 0.019050715477597385,
+    "debug": {
+      "angle_score": 0.016411960124969482,
+      "slope_score": 2.926478339306702e-05,
+      "stability_score": 0.110906017824831,
+      "visibility_factor": 0.47811617851257326
+    }
+  }
+]

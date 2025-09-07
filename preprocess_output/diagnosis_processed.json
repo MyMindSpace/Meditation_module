@@ -1,0 +1,6 @@
+{
+    "user_id": "test_user_1",
+    "mental_disorder": "generalized anxiety disorder",
+    "severity": "moderate",
+    "symptoms": ["excessive worry", "restlessness", "difficulty concentrating"]
+}
