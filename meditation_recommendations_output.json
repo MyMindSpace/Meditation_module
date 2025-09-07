@@ -1,0 +1,52 @@
+{
+  "user_feedback": "I'm feeling very stressed and anxious today. I also have some difficulty focusing.",
+  "diagnosis": {
+    "user_id": "test_user_1",
+    "mental_disorder": "generalized anxiety disorder",
+    "severity": "moderate",
+    "symptoms": [
+      "excessive worry",
+      "restlessness",
+      "difficulty concentrating"
+    ]
+  },
+  "recommendations": [
+    {
+      "meditation_type": "Mindfulness Meditation",
+      "confidence_score": 0.9,
+      "rationale": "Reduces physiological arousal, increases present-moment focus, interrupts rumination",
+      "selection_method": "rule_based"
+    },
+    {
+      "meditation_type": "Breathwork",
+      "confidence_score": 0.9,
+      "rationale": "Reduces physiological arousal, increases present-moment focus, interrupts rumination",
+      "selection_method": "rule_based"
+    },
+    {
+      "meditation_type": "Body Scan",
+      "confidence_score": 0.9,
+      "rationale": "Reduces physiological arousal, increases present-moment focus, interrupts rumination",
+      "selection_method": "rule_based"
+    },
+    {
+      "meditation_type": "Guided Grounding Techniques",
+      "confidence_score": 0.9,
+      "rationale": "Reduces physiological arousal, increases present-moment focus, interrupts rumination",
+      "selection_method": "rule_based"
+    },
+    {
+      "meditation_type": "Focused Attention",
+      "confidence_score": 0.9,
+      "rationale": "Reduces physiological arousal, increases present-moment focus, interrupts rumination",
+      "selection_method": "rule_based"
+    }
+  ],
+  "total_recommendations_found": 9,
+  "metadata": {
+    "rule_based_matches": 12,
+    "ml_enhanced_matches": 0,
+    "hybrid_boost_applied": false,
+    "ml_enabled": false
+  }
+}

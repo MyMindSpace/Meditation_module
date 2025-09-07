@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+pip-wheel-metadata/
+.ipynb_checkpoints/
+.mypy_cache/
+.pytest_cache/
+coverage.xml
+htmlcov/
+.coverage*
+.pyre/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Project-specific large data/outputs
+preprocess_input/
+preprocess_output/
+encoder_output/
+
+# Logs and temp
+*.log
+*.tmp
+
