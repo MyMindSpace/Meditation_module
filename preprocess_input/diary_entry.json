@@ -1,9 +1,6 @@
 {
-  "userId": "test_user_1",
-  "date": "2025-09-07",
-  "title": "Why I want to meditate today",
-  "entry": "I woke up with a tight chest and racing thoughts about work. I want to calm my mind and feel grounded before my meetings. I also want to build consistency to handle stress better.",
-  "tags": ["stress", "anxiety", "grounding", "consistency"],
-  "intent": "calm and grounding before work"
+  "user_id": "demo_user_123",
+  "date": "2024-09-08",
+  "entry": "Today I want to work on my breathing technique and try to improve my posture during meditation. I've been feeling stressed about upcoming deadlines.",
+  "intent": "stress relief and posture improvement"
 }
-

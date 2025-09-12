@@ -1,0 +1,15 @@
+{
+  "session_id": "session_1757343158",
+  "start_time": "2025-09-08 20:22:38.615920",
+  "end_time": "2025-09-08 20:23:08.747361",
+  "duration": 30.131441,
+  "planned_duration": 120.0,
+  "completion_rate": 0.25109534166666664,
+  "average_posture_score": 0.0002820133322412389,
+  "posture_corrections_given": 1,
+  "engagement_score": 0.4900592227997706,
+  "user_rating": 4.5,
+  "meditation_type": "Focused Attention Meditation",
+  "interruptions": 0,
+  "quality_issues": []
+}

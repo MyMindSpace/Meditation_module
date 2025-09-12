@@ -1,0 +1,46 @@
+{
+  "progress_data": [
+    {
+      "timestamp": "2025-09-12T21:04:14.769798",
+      "session_id": "test_session",
+      "metric_type": "posture_improvement",
+      "value": 0.8,
+      "session_duration": 600,
+      "meditation_type": "mindfulness",
+      "user_rating": null,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-12T21:04:14.769798",
+      "session_id": "test_session",
+      "metric_type": "engagement",
+      "value": 0.85,
+      "session_duration": 600,
+      "meditation_type": "mindfulness",
+      "user_rating": null,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-12T21:04:14.769798",
+      "session_id": "test_session",
+      "metric_type": "duration_tolerance",
+      "value": 0.9,
+      "session_duration": 600,
+      "meditation_type": "mindfulness",
+      "user_rating": null,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-12T21:04:14.769798",
+      "session_id": "test_session",
+      "metric_type": "focus_quality",
+      "value": 0.8,
+      "session_duration": 600,
+      "meditation_type": "mindfulness",
+      "user_rating": null,
+      "notes": ""
+    }
+  ],
+  "baselines": {},
+  "baseline_established": false
+}

@@ -1,333 +1,567 @@
-import json
+# Encoders/diagnosis_encoder.py
+"""
+Diagnosis Encoder (DE)
+
+Processes diagnosis data to extract:
+- BERT/BioBERT embeddings for medical text
+- Medical entity recognition
+- Symptom embeddings
+- Clinical feature extraction
+"""
+
 import argparse
-from pathlib import Path
-from typing import Dict, List, Any
-import numpy as np
-import hashlib
+import json
 import re
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple, Union
+
+import numpy as np
+
+# Optional imports with fallbacks
+try:
+    from transformers import (
+        AutoTokenizer, AutoModel, pipeline,
+        BertTokenizer, BertModel
+    )
+    TRANSFORMERS_AVAILABLE = True
+except ImportError:
+    TRANSFORMERS_AVAILABLE = False
+
+try:
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.preprocessing import StandardScaler
+    SKLEARN_AVAILABLE = True
+except ImportError:
+    SKLEARN_AVAILABLE = False
+
+try:
+    import spacy
+    SPACY_AVAILABLE = True
+except ImportError:
+    SPACY_AVAILABLE = False
 
 
-class SimpleDiagnosisEncoder:
+class DiagnosisEncoder:
     """
-    Simple Diagnosis Encoder (DE) that generates numerical embeddings without heavy ML dependencies.
-    
-    Features:
-    - TF-IDF style embeddings for text representation
-    - Simple medical entity recognition using keyword matching
-    - Symptom embeddings using hash-based vectors
+    Diagnosis Encoder for meditation module
+    Extracts embeddings and features from medical/diagnostic text
     """
     
-    def __init__(self):
-        """Initialize the simple diagnosis encoder."""
+    def __init__(self,
+                 model_name: str = "bert-base-uncased",
+                 use_biobert: bool = False,
+                 max_length: int = 512):
         
-        # Medical entity keywords
-        self.medical_keywords = {
-            'diseases': {
-                'anxiety', 'depression', 'stress', 'adhd', 'insomnia', 'ptsd', 'ocd', 
-                'bipolar', 'panic', 'trauma', 'burnout', 'chronic', 'acute'
-            },
-            'symptoms': {
-                'racing', 'thoughts', 'difficulty', 'concentrating', 'restlessness', 
-                'tension', 'fatigue', 'irritability', 'sleep', 'disturbances', 
-                'headache', 'pain', 'nausea', 'dizzy', 'muscle', 'joint', 'back', 'neck'
-            },
-            'treatments': {
-                'medication', 'therapy', 'counseling', 'meditation', 'exercise', 
-                'treatment', 'intervention', 'support', 'care'
-            },
-            'body_parts': {
-                'head', 'neck', 'back', 'chest', 'muscle', 'joint', 'brain', 'heart', 
-                'stomach', 'leg', 'arm', 'shoulder'
-            },
-            'medications': {
-                'medication', 'drug', 'pill', 'tablet', 'injection', 'prescription'
-            }
+        self.model_name = model_name
+        self.use_biobert = use_biobert
+        self.max_length = max_length
+        
+        # Initialize transformers model
+        if TRANSFORMERS_AVAILABLE:
+            self._init_transformer_model()
+        else:
+            self.tokenizer = None
+            self.model = None
+            
+        # Initialize TF-IDF as fallback
+        if SKLEARN_AVAILABLE:
+            self.tfidf_vectorizer = TfidfVectorizer(
+                max_features=300,
+                stop_words='english',
+                ngram_range=(1, 2),
+                min_df=1,
+                max_df=0.95
+            )
+            self.scaler = StandardScaler()
+        else:
+            self.tfidf_vectorizer = None
+            self.scaler = None
+            
+        # Initialize NLP pipeline
+        self.nlp = None
+        if SPACY_AVAILABLE:
+            try:
+                self.nlp = spacy.load("en_core_web_sm")
+            except OSError:
+                try:
+                    self.nlp = spacy.load("en_core_web_md")
+                except OSError:
+                    print("Warning: No spaCy model found. Install with: python -m spacy download en_core_web_sm")
+        
+        # Medical/psychiatric terms mapping
+        self.disorder_mapping = {
+            'depression': ['depression', 'depressed', 'sad', 'sadness', 'hopeless', 'despair', 'melancholy'],
+            'anxiety': ['anxiety', 'anxious', 'worry', 'worried', 'nervous', 'panic', 'fear', 'phobia'],
+            'stress': ['stress', 'stressed', 'tension', 'pressure', 'overwhelmed', 'burden'],
+            'trauma': ['trauma', 'traumatic', 'ptsd', 'flashback', 'nightmare', 'abuse'],
+            'addiction': ['addiction', 'substance', 'alcohol', 'drug', 'dependency', 'withdrawal'],
+            'adhd': ['adhd', 'attention', 'hyperactive', 'impulsive', 'focus', 'concentration'],
+            'bipolar': ['bipolar', 'manic', 'mania', 'mood swing', 'euphoric'],
+            'ocd': ['ocd', 'obsessive', 'compulsive', 'ritual', 'checking', 'counting'],
+            'psychosis': ['psychosis', 'psychotic', 'hallucination', 'delusion', 'paranoid'],
+            'eating_disorder': ['anorexia', 'bulimia', 'binge', 'eating disorder', 'body image']
         }
         
-        # Severity keywords with weights
-        self.severity_weights = {
-            'mild': 1, 'moderate': 2, 'severe': 3, 'extreme': 4, 'chronic': 3,
-            'acute': 2, 'occasional': 1, 'frequent': 3, 'constant': 4, 'intermittent': 2
+        self.symptom_mapping = {
+            'mood': ['sad', 'happy', 'angry', 'irritable', 'mood', 'emotional'],
+            'sleep': ['sleep', 'insomnia', 'nightmare', 'sleepless', 'tired', 'fatigue'],
+            'cognitive': ['memory', 'concentration', 'focus', 'thinking', 'confused', 'foggy'],
+            'physical': ['headache', 'pain', 'ache', 'nausea', 'dizzy', 'tremor'],
+            'social': ['isolated', 'withdrawn', 'lonely', 'social', 'relationship'],
+            'behavioral': ['aggressive', 'impulsive', 'restless', 'hyperactive', 'compulsive']
         }
         
-        # Create vocabulary for TF-IDF style embeddings
-        self.vocabulary = set()
-        for category in self.medical_keywords.values():
-            self.vocabulary.update(category)
-        self.vocabulary = sorted(list(self.vocabulary))
-        self.vocab_size = len(self.vocabulary)
-        self.vocab_to_idx = {word: idx for idx, word in enumerate(self.vocabulary)}
+        self.severity_indicators = {
+            'mild': ['mild', 'slight', 'minor', 'little', 'somewhat', 'occasionally'],
+            'moderate': ['moderate', 'medium', 'regular', 'frequent', 'often', 'some'],
+            'severe': ['severe', 'serious', 'major', 'extreme', 'intense', 'constant', 'always'],
+            'critical': ['critical', 'crisis', 'emergency', 'suicidal', 'dangerous', 'life-threatening']
+        }
     
-    def clean_text(self, text: str) -> str:
-        """Clean and normalize text."""
+    def _init_transformer_model(self):
+        """Initialize transformer model for embeddings"""
+        try:
+            if self.use_biobert:
+                # Use BioBERT for medical text
+                model_names = [
+                    "dmis-lab/biobert-base-cased-v1.1",
+                    "emilyalsentzer/Bio_ClinicalBERT",
+                    "bert-base-uncased"  # Fallback
+                ]
+            else:
+                model_names = ["bert-base-uncased"]
+            
+            for model_name in model_names:
+                try:
+                    print(f"Loading model: {model_name}")
+                    self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+                    self.model = AutoModel.from_pretrained(model_name)
+                    self.model_name = model_name
+                    break
+                except Exception as e:
+                    print(f"Failed to load {model_name}: {e}")
+                    continue
+            
+            if self.model is None:
+                raise Exception("Could not load any transformer model")
+                
+            # Set model to evaluation mode
+            self.model.eval()
+            
+        except Exception as e:
+            print(f"Error initializing transformer model: {e}")
+            self.tokenizer = None
+            self.model = None
+    
+    def preprocess_text(self, text: str) -> str:
+        """Clean and preprocess diagnostic text"""
         if not isinstance(text, str):
-            return ""
+            text = str(text)
+            
+        # Convert to lowercase
         text = text.lower()
-        text = re.sub(r'[^\w\s]', ' ', text)
+        
+        # Remove special characters but keep medical terminology
+        text = re.sub(r'[^\w\s\-\.]', ' ', text)
+        
+        # Normalize whitespace
         text = re.sub(r'\s+', ' ', text).strip()
+        
+        # Handle common medical abbreviations
+        abbreviations = {
+            'pt': 'patient',
+            'hx': 'history',
+            'dx': 'diagnosis',
+            'sx': 'symptoms',
+            'tx': 'treatment',
+            'c/o': 'complains of',
+            'r/o': 'rule out',
+            's/p': 'status post',
+            'w/': 'with',
+            'w/o': 'without'
+        }
+        
+        for abbrev, full in abbreviations.items():
+            text = re.sub(rf'\b{re.escape(abbrev)}\b', full, text)
+        
         return text
     
-    def tokenize(self, text: str) -> List[str]:
-        """Simple tokenization."""
-        return self.clean_text(text).split()
-    
-    def create_tfidf_embedding(self, text: str) -> np.ndarray:
-        """
-        Create TF-IDF style embedding for text.
-        
-        Args:
-            text: Input text
+    def extract_bert_embeddings(self, text: str) -> Optional[np.ndarray]:
+        """Extract BERT/BioBERT embeddings from text"""
+        if not TRANSFORMERS_AVAILABLE or self.tokenizer is None or self.model is None:
+            return None
             
-        Returns:
-            TF-IDF style embedding vector
-        """
-        tokens = self.tokenize(text)
-        if not tokens:
-            return np.zeros(self.vocab_size, dtype=np.float32)
-        
-        # Count term frequencies
-        term_counts = {}
-        for token in tokens:
-            if token in self.vocab_to_idx:
-                term_counts[token] = term_counts.get(token, 0) + 1
-        
-        # Create embedding
-        embedding = np.zeros(self.vocab_size, dtype=np.float32)
-        total_terms = len(tokens)
-        
-        for term, count in term_counts.items():
-            idx = self.vocab_to_idx[term]
-            # Simple TF-IDF: tf * log(total_terms / count)
-            tf = count / total_terms
-            idf = np.log(total_terms / count) if count > 0 else 0
-            embedding[idx] = tf * idf
-        
-        return embedding
+        try:
+            # Tokenize text
+            inputs = self.tokenizer(
+                text,
+                return_tensors="pt",
+                max_length=self.max_length,
+                padding=True,
+                truncation=True
+            )
+            
+            # Get embeddings
+            with torch.no_grad() if 'torch' in globals() else contextlib.nullcontext():
+                outputs = self.model(**inputs)
+                # Use [CLS] token embedding (first token)
+                embeddings = outputs.last_hidden_state[:, 0, :].numpy()
+                return embeddings.flatten()
+                
+        except Exception as e:
+            print(f"Error extracting BERT embeddings: {e}")
+            return None
+    
+    def extract_tfidf_embeddings(self, text: str, fit_on_text: bool = True) -> Optional[np.ndarray]:
+        """Extract TF-IDF embeddings as fallback"""
+        if not SKLEARN_AVAILABLE or self.tfidf_vectorizer is None:
+            return None
+            
+        try:
+            if fit_on_text:
+                # For single text, create a simple corpus
+                corpus = [text, "healthy normal baseline"]  # Add baseline for comparison
+                tfidf_matrix = self.tfidf_vectorizer.fit_transform(corpus)
+                return tfidf_matrix[0].toarray().flatten()  # Return first document (the input)
+            else:
+                # Assume vectorizer is already fitted
+                tfidf_matrix = self.tfidf_vectorizer.transform([text])
+                return tfidf_matrix.toarray().flatten()
+                
+        except Exception as e:
+            print(f"Error extracting TF-IDF embeddings: {e}")
+            return None
     
     def extract_medical_entities(self, text: str) -> Dict[str, List[str]]:
-        """
-        Extract medical entities using keyword matching.
+        """Extract medical entities using NLP"""
+        entities = {
+            'disorders': [],
+            'symptoms': [],
+            'medications': [],
+            'procedures': [],
+            'anatomy': []
+        }
         
-        Args:
-            text: Input text
-            
-        Returns:
-            Dictionary of entity types and their values
-        """
-        tokens = self.tokenize(text)
-        entities = {category: [] for category in self.medical_keywords.keys()}
+        if self.nlp is not None:
+            try:
+                doc = self.nlp(text)
+                
+                # Extract named entities
+                for ent in doc.ents:
+                    if ent.label_ in ['DISEASE', 'SYMPTOM']:
+                        entities['disorders'].append(ent.text.lower())
+                    elif ent.label_ == 'CHEMICAL':
+                        entities['medications'].append(ent.text.lower())
+                    elif ent.label_ in ['ORGAN', 'BODY_PART']:
+                        entities['anatomy'].append(ent.text.lower())
+                        
+            except Exception as e:
+                print(f"Error in NER: {e}")
         
-        for token in tokens:
-            for category, keywords in self.medical_keywords.items():
-                if token in keywords:
-                    entities[category].append(token)
+        # Rule-based entity extraction as fallback/supplement
+        text_lower = text.lower()
+        
+        # Extract disorders
+        for disorder, terms in self.disorder_mapping.items():
+            for term in terms:
+                if term in text_lower:
+                    entities['disorders'].append(disorder)
+                    break
+        
+        # Extract symptoms
+        for symptom_category, terms in self.symptom_mapping.items():
+            for term in terms:
+                if term in text_lower:
+                    entities['symptoms'].append(symptom_category)
+                    break
         
         # Remove duplicates
-        for category in entities:
-            entities[category] = list(set(entities[category]))
+        for key in entities:
+            entities[key] = list(set(entities[key]))
         
         return entities
     
-    def create_symptom_embeddings(self, symptoms: List[str]) -> Dict[str, np.ndarray]:
-        """
-        Create hash-based embeddings for symptoms.
+    def assess_severity(self, text: str) -> Dict[str, float]:
+        """Assess severity indicators in text"""
+        text_lower = text.lower()
+        severity_scores = {level: 0.0 for level in self.severity_indicators.keys()}
         
-        Args:
-            symptoms: List of symptom strings
-            
-        Returns:
-            Dictionary mapping symptoms to their embeddings
-        """
-        symptom_embeddings = {}
-        embedding_dim = 128  # Fixed dimension for hash embeddings
+        for level, indicators in self.severity_indicators.items():
+            for indicator in indicators:
+                # Count occurrences (with word boundaries)
+                pattern = rf'\b{re.escape(indicator)}\b'
+                matches = len(re.findall(pattern, text_lower))
+                severity_scores[level] += matches
         
-        for symptom in symptoms:
-            if not symptom.strip():
-                continue
-            
-            # Create hash-based embedding
-            hash_obj = hashlib.md5(symptom.encode())
-            hash_bytes = hash_obj.digest()
-            
-            # Convert to float vector
-            embedding = np.zeros(embedding_dim, dtype=np.float32)
-            for i, byte_val in enumerate(hash_bytes):
-                if i < embedding_dim:
-                    embedding[i] = (byte_val - 128) / 128.0  # Normalize to [-1, 1]
-            
-            symptom_embeddings[symptom] = embedding
+        # Normalize scores
+        total_scores = sum(severity_scores.values())
+        if total_scores > 0:
+            severity_scores = {k: v / total_scores for k, v in severity_scores.items()}
         
-        return symptom_embeddings
+        return severity_scores
     
-    def calculate_severity_score(self, text: str) -> float:
-        """Calculate severity score from text."""
-        tokens = self.tokenize(text)
-        severity_scores = []
+    def extract_clinical_features(self, text: str, entities: Dict[str, List[str]]) -> Dict[str, float]:
+        """Extract clinical features from text and entities"""
+        features = {}
         
-        for token in tokens:
-            if token in self.severity_weights:
-                severity_scores.append(self.severity_weights[token])
+        # Count features
+        features['disorder_count'] = len(entities['disorders'])
+        features['symptom_count'] = len(entities['symptoms'])
+        features['medication_count'] = len(entities['medications'])
+        features['text_length'] = len(text.split())
         
-        if not severity_scores:
-            return 1.0  # Default mild severity
+        # Presence of key disorder categories (binary features)
+        disorder_categories = ['depression', 'anxiety', 'trauma', 'addiction', 'adhd']
+        for category in disorder_categories:
+            features[f'has_{category}'] = 1.0 if category in entities['disorders'] else 0.0
         
-        return sum(severity_scores) / len(severity_scores)
+        # Symptom category coverage
+        symptom_categories = ['mood', 'sleep', 'cognitive', 'physical', 'social', 'behavioral']
+        for category in symptom_categories:
+            features[f'has_{category}_symptoms'] = 1.0 if category in entities['symptoms'] else 0.0
+        
+        # Text complexity indicators
+        sentences = text.split('.')
+        features['sentence_count'] = len([s for s in sentences if s.strip()])
+        features['avg_sentence_length'] = features['text_length'] / max(features['sentence_count'], 1)
+        
+        # Clinical language indicators
+        clinical_terms = ['diagnosis', 'treatment', 'therapy', 'medication', 'symptoms', 'patient', 'history']
+        clinical_term_count = sum(1 for term in clinical_terms if term in text.lower())
+        features['clinical_language_ratio'] = clinical_term_count / max(features['text_length'], 1)
+        
+        return features
     
-    def process_diagnosis_record(self, record: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Process a single diagnosis record to generate embeddings.
+    def create_diagnosis_embedding(self, text: str) -> Dict[str, Any]:
+        """Create comprehensive diagnosis embedding"""
+        # Preprocess text
+        clean_text = self.preprocess_text(text)
         
-        Args:
-            record: Preprocessed diagnosis record
-            
-        Returns:
-            Record with numerical embeddings
-        """
-        # Extract text components
-        original_text = record.get('original_text', '')
-        cleaned_text = record.get('cleaned_text', '')
-        tokens = record.get('tokens', [])
+        # Extract different types of features
+        bert_embedding = self.extract_bert_embeddings(clean_text)
+        tfidf_embedding = self.extract_tfidf_embeddings(clean_text)
+        entities = self.extract_medical_entities(clean_text)
+        severity_scores = self.assess_severity(clean_text)
+        clinical_features = self.extract_clinical_features(clean_text, entities)
         
-        # Generate main text embedding
-        main_embedding = self.create_tfidf_embedding(cleaned_text)
+        # Combine embeddings
+        combined_embedding = []
         
-        # Extract medical entities
-        medical_entities = self.extract_medical_entities(cleaned_text)
-        
-        # Create symptom embeddings
-        symptoms = medical_entities.get('symptoms', [])
-        symptom_embeddings = self.create_symptom_embeddings(symptoms)
-        
-        # Aggregate symptom embeddings (mean pooling)
-        if symptom_embeddings:
-            symptom_vectors = list(symptom_embeddings.values())
-            aggregated_symptom_embedding = np.mean(symptom_vectors, axis=0)
+        if bert_embedding is not None:
+            # Use BERT as primary embedding
+            combined_embedding = bert_embedding[:256].tolist()  # Limit size
+        elif tfidf_embedding is not None:
+            # Use TF-IDF as fallback
+            combined_embedding = tfidf_embedding[:256].tolist()
         else:
-            aggregated_symptom_embedding = np.zeros(128, dtype=np.float32)
+            # Create simple bag-of-words embedding
+            combined_embedding = self._create_bow_embedding(clean_text)
         
-        # Create entity embeddings for other medical terms
-        entity_embeddings = {}
-        for entity_type, entities in medical_entities.items():
-            if entity_type == 'symptoms':  # Already handled above
-                continue
-            if entities:
-                entity_text = ' '.join(entities)
-                entity_embeddings[entity_type] = self.create_tfidf_embedding(entity_text)
-            else:
-                entity_embeddings[entity_type] = np.zeros(self.vocab_size, dtype=np.float32)
-        
-        # Calculate severity score
-        severity_score = self.calculate_severity_score(cleaned_text)
-        
-        # Combine all embeddings
-        combined_embedding = np.concatenate([
-            main_embedding,  # vocab_size dims
-            aggregated_symptom_embedding,  # 128 dims
-            entity_embeddings.get('diseases', np.zeros(self.vocab_size)),  # vocab_size dims
-            entity_embeddings.get('treatments', np.zeros(self.vocab_size)),  # vocab_size dims
-            entity_embeddings.get('body_parts', np.zeros(self.vocab_size)),  # vocab_size dims
-            entity_embeddings.get('medications', np.zeros(self.vocab_size)),  # vocab_size dims
-            [severity_score]  # 1 dim
-        ])  # Total: 5*vocab_size + 128 + 1 dims
+        # Add clinical features to embedding
+        feature_vector = list(clinical_features.values()) + list(severity_scores.values())
+        combined_embedding.extend(feature_vector)
         
         return {
-            'userId': record.get('userId'),
-            'original_text': original_text,
-            'cleaned_text': cleaned_text,
-            'tokens': tokens,
-            'features': record.get('features', {}),
-            'medical_entities': medical_entities,
-            'embeddings': {
-                'main_text': main_embedding.tolist(),
-                'symptoms': {k: v.tolist() for k, v in symptom_embeddings.items()},
-                'aggregated_symptoms': aggregated_symptom_embedding.tolist(),
-                'diseases': entity_embeddings.get('diseases', np.zeros(self.vocab_size)).tolist(),
-                'treatments': entity_embeddings.get('treatments', np.zeros(self.vocab_size)).tolist(),
-                'body_parts': entity_embeddings.get('body_parts', np.zeros(self.vocab_size)).tolist(),
-                'medications': entity_embeddings.get('medications', np.zeros(self.vocab_size)).tolist(),
-                'combined': combined_embedding.tolist()
-            },
-            'embedding_dimensions': {
-                'main_text': len(main_embedding),
-                'symptoms_individual': len(aggregated_symptom_embedding),
-                'combined': len(combined_embedding),
-                'vocabulary_size': self.vocab_size
-            },
-            'severity_score': severity_score
+            'embedding': combined_embedding,
+            'entities': entities,
+            'severity': severity_scores,
+            'clinical_features': clinical_features,
+            'primary_disorder': self._get_primary_disorder(entities, severity_scores),
+            'risk_level': self._assess_risk_level(entities, severity_scores, clean_text)
+        }
+    
+    def _create_bow_embedding(self, text: str, vocab_size: int = 128) -> List[float]:
+        """Create simple bag-of-words embedding as last resort"""
+        words = text.split()
+        
+        # Create simple hash-based embedding
+        embedding = [0.0] * vocab_size
+        
+        for word in words:
+            # Simple hash function
+            hash_val = abs(hash(word)) % vocab_size
+            embedding[hash_val] += 1.0
+        
+        # Normalize
+        total = sum(embedding)
+        if total > 0:
+            embedding = [x / total for x in embedding]
+        
+        return embedding
+    
+    def _get_primary_disorder(self, entities: Dict[str, List[str]], 
+                             severity_scores: Dict[str, float]) -> str:
+        """Determine primary disorder from entities and severity"""
+        if not entities['disorders']:
+            return 'unspecified'
+        
+        # Weight disorders by severity
+        disorder_weights = {}
+        for disorder in entities['disorders']:
+            # Base weight
+            weight = 1.0
+            
+            # Increase weight for severe cases
+            if severity_scores.get('severe', 0) > 0.3:
+                weight *= 2.0
+            elif severity_scores.get('moderate', 0) > 0.3:
+                weight *= 1.5
+            
+            disorder_weights[disorder] = weight
+        
+        # Return disorder with highest weight
+        return max(disorder_weights.items(), key=lambda x: x[1])[0]
+    
+    def _assess_risk_level(self, entities: Dict[str, List[str]], 
+                          severity_scores: Dict[str, float], text: str) -> str:
+        """Assess overall risk level"""
+        risk_score = 0.0
+        
+        # Risk from disorders
+        high_risk_disorders = ['trauma', 'psychosis', 'addiction']
+        medium_risk_disorders = ['depression', 'bipolar']
+        
+        for disorder in entities['disorders']:
+            if disorder in high_risk_disorders:
+                risk_score += 3.0
+            elif disorder in medium_risk_disorders:
+                risk_score += 2.0
+            else:
+                risk_score += 1.0
+        
+        # Risk from severity
+        risk_score += severity_scores.get('severe', 0) * 3.0
+        risk_score += severity_scores.get('critical', 0) * 5.0
+        
+        # Risk from crisis indicators
+        crisis_terms = ['suicide', 'kill myself', 'end it all', 'can\'t go on', 'hopeless']
+        for term in crisis_terms:
+            if term in text.lower():
+                risk_score += 5.0
+                break
+        
+        # Convert to categorical risk level
+        if risk_score >= 5.0:
+            return 'high'
+        elif risk_score >= 2.0:
+            return 'moderate'
+        elif risk_score >= 1.0:
+            return 'low'
+        else:
+            return 'minimal'
+    
+    def process_diagnosis_data(self, data: Union[str, Dict[str, Any]]) -> Dict[str, Any]:
+        """Process diagnosis data from various formats"""
+        # Extract text from different input formats
+        if isinstance(data, str):
+            text = data
+            structured_data = {}
+        elif isinstance(data, dict):
+            # Try to extract text from common fields
+            text_fields = ['diagnosis', 'description', 'symptoms', 'history', 'notes', 'text']
+            text_parts = []
+            
+            for field in text_fields:
+                if field in data and data[field]:
+                    text_parts.append(str(data[field]))
+            
+            text = ' '.join(text_parts) if text_parts else str(data)
+            structured_data = data
+        else:
+            text = str(data)
+            structured_data = {}
+        
+        if not text.strip():
+            return self._empty_result("Empty input")
+        
+        # Create embedding
+        result = self.create_diagnosis_embedding(text)
+        
+        # Add metadata
+        result.update({
+            'original_text': text,
+            'structured_data': structured_data,
+            'model_used': self.model_name if self.model is not None else 'fallback',
+            'text_length': len(text.split())
+        })
+        
+        return result
+    
+    def _empty_result(self, error: str = None) -> Dict[str, Any]:
+        """Return empty result structure"""
+        return {
+            'embedding': [0.0] * 128,
+            'entities': {cat: [] for cat in ['disorders', 'symptoms', 'medications', 'procedures', 'anatomy']},
+            'severity': {level: 0.0 for level in self.severity_indicators.keys()},
+            'clinical_features': {},
+            'primary_disorder': 'unspecified',
+            'risk_level': 'minimal',
+            'original_text': '',
+            'structured_data': {},
+            'model_used': 'none',
+            'text_length': 0,
+            'error': error
         }
 
 
-def load_preprocessed_data(input_path: Path) -> List[Dict[str, Any]]:
-    """Load preprocessed diagnosis data."""
-    with input_path.open('r', encoding='utf-8') as f:
-        data = json.load(f)
-    
-    if not isinstance(data, list):
-        raise ValueError("Expected a JSON array of diagnosis records")
-    
-    return data
-
-
-def save_encoded_data(output_path: Path, data: List[Dict[str, Any]]) -> None:
-    """Save encoded diagnosis data."""
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    with output_path.open('w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-
-
 def main():
-    parser = argparse.ArgumentParser(description="Simple Diagnosis Encoder (DE) for generating numerical embeddings")
-    parser.add_argument("--input", type=str, default="preprocess_output/diagnosis_processed.json", 
-                       help="Path to preprocessed diagnosis data")
+    """CLI interface for diagnosis encoder"""
+    parser = argparse.ArgumentParser(description="Diagnosis Encoder for meditation module")
+    parser.add_argument("--input", type=str, required=True,
+                       help="Input JSON file with diagnosis data")
     parser.add_argument("--output", type=str, default="preprocess_output/diagnosis_encoded.json",
-                       help="Path to save encoded diagnosis data")
+                       help="Output JSON file")
+    parser.add_argument("--model", type=str, default="bert-base-uncased",
+                       help="Transformer model name")
+    parser.add_argument("--use-biobert", action="store_true",
+                       help="Use BioBERT for medical text")
+    parser.add_argument("--max-length", type=int, default=512,
+                       help="Maximum text length for transformer")
+    
     args = parser.parse_args()
     
-    input_path = Path(args.input)
-    output_path = Path(args.output)
+    # Initialize encoder
+    encoder = DiagnosisEncoder(
+        model_name=args.model,
+        use_biobert=args.use_biobert,
+        max_length=args.max_length
+    )
     
+    # Load input data
+    input_path = Path(args.input)
     if not input_path.exists():
         raise FileNotFoundError(f"Input file not found: {input_path}")
     
-    # Load preprocessed data
-    print(f"Loading preprocessed data from {input_path}...")
-    records = load_preprocessed_data(input_path)
+    with input_path.open("r", encoding="utf-8") as f:
+        input_data = json.load(f)
     
-    # Initialize encoder
-    encoder = SimpleDiagnosisEncoder()
+    # Process data
+    if isinstance(input_data, list):
+        results = []
+        for item in input_data:
+            result = encoder.process_diagnosis_data(item)
+            results.append(result)
+    else:
+        results = [encoder.process_diagnosis_data(input_data)]
     
-    # Process records
-    print(f"Processing {len(records)} diagnosis records...")
-    encoded_records = []
+    # Save output
+    output_path = Path(args.output)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     
-    for i, record in enumerate(records):
-        print(f"Processing record {i+1}/{len(records)}...")
-        try:
-            encoded_record = encoder.process_diagnosis_record(record)
-            encoded_records.append(encoded_record)
-        except Exception as e:
-            print(f"Error processing record {i+1}: {e}")
-            continue
+    with output_path.open("w", encoding="utf-8") as f:
+        json.dump(results, f, ensure_ascii=False, indent=2)
     
-    # Save encoded data
-    save_encoded_data(output_path, encoded_records)
-    print(f"Saved {len(encoded_records)} encoded records to {output_path}")
+    print(f"Diagnosis encoding complete. Processed {len(results)} records.")
+    print(f"Results saved to {output_path}")
     
-    # Print summary
-    if encoded_records:
-        sample_record = encoded_records[0]
-        print(f"\nEmbedding dimensions:")
-        for key, dim in sample_record['embedding_dimensions'].items():
-            print(f"  {key}: {dim}")
+    # Summary statistics
+    if results:
+        primary_disorders = [r.get('primary_disorder', 'unspecified') for r in results]
+        risk_levels = [r.get('risk_level', 'minimal') for r in results]
         
-        print(f"\nSample medical entities found:")
-        entities = sample_record['medical_entities']
-        for entity_type, entity_list in entities.items():
-            if entity_list:
-                print(f"  {entity_type}: {entity_list}")
-        
-        print(f"\nVocabulary size: {sample_record['embedding_dimensions']['vocabulary_size']}")
+        print(f"\nSummary:")
+        print(f"Primary disorders: {dict(zip(*np.unique(primary_disorders, return_counts=True)))}")
+        print(f"Risk levels: {dict(zip(*np.unique(risk_levels, return_counts=True)))}")
 
 
 if __name__ == "__main__":

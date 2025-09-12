@@ -1,13 +1,20 @@
 {
-  "userId": "test_user_1",
+  "userId": "demo_user_123",
+  "feedback": "I'm feeling very stressed and anxious today. I also have some difficulty focusing on my work. The meditation session helped me feel more calm and centered.",
   "recent_sessions": [
     {
-      "sessionId": "sess_test_001",
-      "rating": 4,
-      "feedbackText": "Felt anxious but the breathing helped. Would like more grounding.",
-      "timestamp": "2025-09-06T18:30:00Z"
+      "sessionId": "session_001",
+      "timestamp": "2024-09-01 09:00:00",
+      "feedbackText": "Great session, felt very relaxed afterwards",
+      "rating": 4.5,
+      "completed": true
+    },
+    {
+      "sessionId": "session_002",
+      "timestamp": "2024-09-02 09:15:00",
+      "feedbackText": "Had trouble focusing today, mind was wandering",
+      "rating": 3.0,
+      "completed": true
     }
   ]
 }
-
-

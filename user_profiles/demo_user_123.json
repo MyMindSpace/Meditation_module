@@ -1,0 +1,43 @@
+{
+  "user_id": "demo_user_123",
+  "profile": {
+    "age": 30,
+    "meditation_experience": "beginner",
+    "goals": [
+      "stress reduction",
+      "better focus"
+    ],
+    "availability": {
+      "morning": true,
+      "afternoon": false,
+      "evening": true
+    },
+    "preferred_duration_minutes": 15
+  },
+  "sessions": [
+    {
+      "session_id": "session_1757342652",
+      "timestamp": "2025-09-08T20:14:12.952453",
+      "meditation_type": "Focused Attention Meditation",
+      "duration": 30.103569,
+      "completion_rate": 0.250863075,
+      "rating": 3.8770447817006213
+    },
+    {
+      "session_id": "session_1757342732",
+      "timestamp": "2025-09-08T20:15:32.968782",
+      "meditation_type": "Focused Attention Meditation",
+      "duration": 30.16847,
+      "completion_rate": 0.25140391666666667,
+      "rating": 4.9883313616467015
+    },
+    {
+      "session_id": "session_1757343158",
+      "timestamp": "2025-09-08T20:22:38.615920",
+      "meditation_type": "Focused Attention Meditation",
+      "duration": 30.131441,
+      "completion_rate": 0.25109534166666664,
+      "rating": 4.897435211771003
+    }
+  ]
+}

@@ -1,4 +1,36 @@
 {
-    "user_id": "test_user_1",
-    "feedback": "I'm feeling very stressed and anxious today. I also have some difficulty focusing."
+  "user_id": "unknown",
+  "total_entries": 2,
+  "recent_entries": 2,
+  "aggregated_text": "",
+  "sentiment_analysis": {
+    "positive": 0.0,
+    "negative": 0.0,
+    "neutral": 1.0
+  },
+  "quality_indicators": {
+    "completion": 0.0,
+    "interruption": 0.0,
+    "focus": 0.0,
+    "distraction": 0.0
+  },
+  "rating_statistics": {
+    "mean": 3.0,
+    "std": 0.0,
+    "count": 0,
+    "trend": "stable"
+  },
+  "temporal_patterns": {
+    "session_frequency": 14.0,
+    "preferred_times": [
+      "morning"
+    ],
+    "consistency_score": 0.5,
+    "trend_direction": "stable"
+  },
+  "text_statistics": {
+    "total_words": 0,
+    "avg_feedback_length": 0,
+    "vocabulary_size": 0
+  }
 }

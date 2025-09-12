@@ -1,0 +1,146 @@
+{
+  "progress_data": [
+    {
+      "timestamp": "2025-09-08T20:14:43.059585",
+      "session_id": "session_1757342652",
+      "metric_type": "posture_improvement",
+      "value": 0.006008227185048256,
+      "session_duration": 30.103569,
+      "meditation_type": "Focused Attention Meditation",
+      "user_rating": 4.5,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-08T20:14:43.059585",
+      "session_id": "session_1757342652",
+      "metric_type": "engagement",
+      "value": 0.49126172770886006,
+      "session_duration": 30.103569,
+      "meditation_type": "Focused Attention Meditation",
+      "user_rating": 4.5,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-08T20:14:43.059585",
+      "session_id": "session_1757342652",
+      "metric_type": "duration_tolerance",
+      "value": 0.250863075,
+      "session_duration": 30.103569,
+      "meditation_type": "Focused Attention Meditation",
+      "user_rating": 4.5,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-08T20:14:43.059585",
+      "session_id": "session_1757342652",
+      "metric_type": "focus_quality",
+      "value": 1.0,
+      "session_duration": 30.103569,
+      "meditation_type": "Focused Attention Meditation",
+      "user_rating": 4.5,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-08T20:16:03.143252",
+      "session_id": "session_1757342732",
+      "metric_type": "posture_improvement",
+      "value": 0.0065676362352328375,
+      "session_duration": 30.16847,
+      "meditation_type": "Focused Attention Meditation",
+      "user_rating": 4.5,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-08T20:16:03.143252",
+      "session_id": "session_1757342732",
+      "metric_type": "engagement",
+      "value": 0.49137920360939885,
+      "session_duration": 30.16847,
+      "meditation_type": "Focused Attention Meditation",
+      "user_rating": 4.5,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-08T20:16:03.143252",
+      "session_id": "session_1757342732",
+      "metric_type": "duration_tolerance",
+      "value": 0.25140391666666667,
+      "session_duration": 30.16847,
+      "meditation_type": "Focused Attention Meditation",
+      "user_rating": 4.5,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-08T20:16:03.143252",
+      "session_id": "session_1757342732",
+      "metric_type": "focus_quality",
+      "value": 1.0,
+      "session_duration": 30.16847,
+      "meditation_type": "Focused Attention Meditation",
+      "user_rating": 4.5,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-08T20:16:03.143252",
+      "session_id": "session_1757342732",
+      "metric_type": "consistency",
+      "value": 0.3,
+      "session_duration": 30.16847,
+      "meditation_type": "Focused Attention Meditation",
+      "user_rating": 4.5,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-08T20:23:08.752360",
+      "session_id": "session_1757343158",
+      "metric_type": "posture_improvement",
+      "value": 0.0002820133322412389,
+      "session_duration": 30.131441,
+      "meditation_type": "Focused Attention Meditation",
+      "user_rating": 4.5,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-08T20:23:08.752360",
+      "session_id": "session_1757343158",
+      "metric_type": "engagement",
+      "value": 0.4900592227997706,
+      "session_duration": 30.131441,
+      "meditation_type": "Focused Attention Meditation",
+      "user_rating": 4.5,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-08T20:23:08.752360",
+      "session_id": "session_1757343158",
+      "metric_type": "duration_tolerance",
+      "value": 0.25109534166666664,
+      "session_duration": 30.131441,
+      "meditation_type": "Focused Attention Meditation",
+      "user_rating": 4.5,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-08T20:23:08.752360",
+      "session_id": "session_1757343158",
+      "metric_type": "focus_quality",
+      "value": 1.0,
+      "session_duration": 30.131441,
+      "meditation_type": "Focused Attention Meditation",
+      "user_rating": 4.5,
+      "notes": ""
+    },
+    {
+      "timestamp": "2025-09-08T20:23:08.752360",
+      "session_id": "session_1757343158",
+      "metric_type": "consistency",
+      "value": 0.3,
+      "session_duration": 30.131441,
+      "meditation_type": "Focused Attention Meditation",
+      "user_rating": 4.5,
+      "notes": ""
+    }
+  ],
+  "baselines": {},
+  "baseline_established": true
+}

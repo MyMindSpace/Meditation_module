@@ -1,6 +1,59 @@
 {
-    "user_id": "test_user_1",
+  "original_text": "Patient reports feeling anxious and overwhelmed with work stress. Has difficulty concentrating and experiences restlessness. Seeks meditation for stress management. excessive worry restlessness difficulty concentrating generalized anxiety disorder",
+  "processed_text": "feeling anxious and overwhelmed with work stress. has difficulty concentrating and experiences restlessness. seeks meditation for stress management. excessive worry restlessness difficulty concentrating anxiety",
+  "extracted_disorders": [
+    "anxiety"
+  ],
+  "primary_disorder": "anxiety",
+  "severity_assessment": {
+    "mild": 0.4,
+    "moderate": 0.4,
+    "severe": 0.15,
+    "critical": 0.05
+  },
+  "severity_score": 0.4625,
+  "functional_impact": {
+    "occupational": 0.1111111111111111,
+    "social": 0.0,
+    "academic": 0.0,
+    "daily_living": 0.0
+  },
+  "treatment_history": {
+    "medication": 0.0,
+    "psychotherapy": 0.0,
+    "hospitalization": 0.0,
+    "alternative": 1.0
+  },
+  "temporal_markers": {
+    "onset": [],
+    "duration": [
+      "stress management"
+    ],
+    "frequency": []
+  },
+  "complexity_metrics": {
+    "word_count": 24,
+    "sentence_count": 4,
+    "avg_word_length": 7.791666666666667,
+    "avg_sentence_length": 6.0,
+    "lexical_diversity": 0.875,
+    "medical_term_density": 0.041666666666666664
+  },
+  "structured_data": {
+    "user_id": "demo_user_123",
     "mental_disorder": "generalized anxiety disorder",
     "severity": "moderate",
-    "symptoms": ["excessive worry", "restlessness", "difficulty concentrating"]
+    "symptoms": [
+      "excessive worry",
+      "restlessness",
+      "difficulty concentrating"
+    ],
+    "description": "Patient reports feeling anxious and overwhelmed with work stress. Has difficulty concentrating and experiences restlessness. Seeks meditation for stress management."
+  },
+  "processing_metadata": {
+    "abbreviations_expanded": true,
+    "text_length_original": 247,
+    "text_length_processed": 210,
+    "disorders_found": 1
+  }
 }

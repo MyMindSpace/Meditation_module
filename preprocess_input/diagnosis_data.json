@@ -1,14 +1,11 @@
 {
-  "userId": "test_user_1",
+  "user_id": "demo_user_123",
   "mental_disorder": "generalized anxiety disorder",
   "severity": "moderate",
   "symptoms": [
     "excessive worry",
     "restlessness",
-    "difficulty concentrating",
-    "muscle tension"
+    "difficulty concentrating"
   ],
-  "timestamp": "2025-09-07T10:00:00Z"
+  "description": "Patient reports feeling anxious and overwhelmed with work stress. Has difficulty concentrating and experiences restlessness. Seeks meditation for stress management."
 }
-
-

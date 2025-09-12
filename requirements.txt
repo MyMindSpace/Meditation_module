@@ -1,0 +1,46 @@
+# Meditation Module Requirements
+# Core Dependencies for Multi-modal Meditation System
+
+# Core ML and Numerical Computing
+numpy>=1.21.0
+torch>=1.9.0
+torchvision>=0.10.0
+transformers>=4.20.0
+scikit-learn>=1.0.0
+
+# Computer Vision and Pose Detection
+mediapipe>=0.8.0
+opencv-python>=4.5.0
+Pillow>=8.3.0
+
+# Natural Language Processing
+spacy>=3.4.0
+
+# Audio Processing
+librosa>=0.9.0
+soundfile>=0.10.0
+pyaudio>=0.2.11
+
+# Data Handling and Storage
+pandas>=1.3.0
+jsonschema>=4.0.0
+
+# Visualization and Progress
+matplotlib>=3.5.0
+seaborn>=0.11.0
+tqdm>=4.60.0
+
+# Development and Testing Tools
+jupyter>=1.0.0
+ipython>=7.30.0
+pytest>=7.0.0
+black>=22.0.0
+flake8>=4.0.0
+
+# Optional GPU Support (uncomment if you have CUDA GPU)
+# torch>=1.9.0+cu111
+# torchvision>=0.10.0+cu111
+# torchaudio>=0.9.0+cu111
+
+# Additional spaCy model (install separately)
+# python -m spacy download en_core_web_sm

@@ -1,0 +1,1809 @@
+{
+  "config": {
+    "session_id": "session_1757342732",
+    "user_id": "demo_user_123",
+    "meditation_type": "Focused Attention Meditation",
+    "planned_duration": 120.0,
+    "enable_posture_detection": true,
+    "enable_audio_feedback": true,
+    "posture_correction_interval": 20.0,
+    "quality_check_interval": 10.0,
+    "adaptation_sensitivity": 0.7,
+    "save_session_data": true
+  },
+  "posture_scores": [
+    1.0626844252118541e-154,
+    3.1609554830082524e-292,
+    1.2745062765874766e-18,
+    1.329052269161204e-60,
+    6.890744647701386e-39,
+    3.401899683113236e-127,
+    1.5177875128334204e-34,
+    9.536077584583576e-126,
+    2.0856716056014193e-273,
+    5.1194733609229314e-298,
+    5.066735640673597e-49,
+    0.014000010490417481,
+    2.1004608673345317e-121,
+    2.24465216682573e-108,
+    3.9812989685951855e-46,
+    7.31192869222958e-178,
+    1.6105594723346064e-173,
+    0.3,
+    0.0,
+    0.014000010490417481,
+    2.2058874184361432e-11,
+    6.183460743436342e-10,
+    0.0,
+    1.1555918784489173e-238,
+    3.3779470422498066e-279,
+    5.745508790142016e-175,
+    0.0,
+    0.0,
+    1.0552021062843996e-306,
+    4.7906101510535e-311,
+    6.033887967058977e-65,
+    6.247822154842773e-259,
+    0.00038179014040194237,
+    6.033887967058977e-65,
+    1.965532085731957e-134,
+    0.0,
+    1.0190705071509758e-112,
+    2.284098140243089e-205,
+    2.9579029631279313e-305,
+    4.43669251692964e-75,
+    2.501402569920375e-137,
+    8.92350186381412e-139,
+    3.1063663374022197e-195,
+    0.0,
+    8.92350186381412e-139,
+    3.857640484655313e-253,
+    1.3524081196820225e-157,
+    1.1081649205461767e-196,
+    3.4862287268016294e-72,
+    2.906820498850694e-208
+  ],
+  "adaptation_history": [
+    {
+      "timestamp": "2025-09-08T20:15:34.047012",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:34.147481",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:34.247695",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:34.347894",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:34.448388",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:34.549562",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:34.650415",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:34.750592",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:34.851544",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:34.951832",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:35.052141",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:35.152791",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:35.253703",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:35.354141",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:35.454428",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:35.554905",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:35.655314",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:35.755412",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:35.855605",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:35.955793",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:36.055913",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:36.156843",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:36.257293",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:36.357497",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:36.457869",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:36.559005",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:36.659622",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:36.760294",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:36.860922",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:36.961358",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:37.062101",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:37.162643",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:37.263013",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:37.363523",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:37.464229",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:37.564728",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:37.665764",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:37.766317",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:37.866862",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:37.967411",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:38.067704",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:38.168266",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:38.268678",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:38.369342",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:38.469727",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:38.570179",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:38.671004",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:38.771166",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:38.871744",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:38.972473",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:39.072752",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:39.173299",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:39.274918",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:39.375241",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:39.475481",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:39.575898",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:39.676021",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:39.776444",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:39.876817",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:39.977035",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:40.077354",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:40.178008",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:40.278564",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:40.379132",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:40.479520",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:40.580210",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:40.680900",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:40.781427",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:40.882014",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:40.982405",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:41.082888",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:41.183436",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:41.284429",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:41.384866",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:41.485413",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:41.585864",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:41.686334",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:41.786449",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:41.886783",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:41.987116",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:42.087690",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:42.188032",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:42.288583",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:42.389095",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:42.489585",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:42.589785",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:42.690191",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:42.790816",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:42.891419",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:42.992014",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:43.092578",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:43.193007",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:43.293441",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:43.393954",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:43.495008",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:43.595297",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:43.695719",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:43.796341",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:43.896810",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:43.997375",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:44.097856",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:44.198034",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:44.298634",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:44.399375",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:44.499685",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:44.600459",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:44.700635",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:44.801034",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:44.901490",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:45.001923",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:45.102468",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:45.202946",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:45.303162",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:45.404274",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:45.504812",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:45.605726",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:45.706055",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:45.806185",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:45.906332",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:46.006873",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:46.107073",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:46.208028",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:46.308245",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:46.408589",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:46.508823",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:46.609229",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:46.710124",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:46.810330",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:46.910805",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:47.011294",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:47.112259",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:47.212668",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:47.313117",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:47.413222",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:47.514066",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:47.614216",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:47.714633",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:47.814964",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:47.915320",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:48.015615",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:48.116654",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:48.217494",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:48.317674",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:48.418103",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:48.518460",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:48.619185",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:48.719440",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:48.819992",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:48.920435",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:49.020681",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:49.120805",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:49.221161",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:49.321605",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:49.422239",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:49.522889",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:49.623790",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:49.724207",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:49.825030",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:49.925816",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:50.026237",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:50.126605",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:50.227006",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:50.327669",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:50.428634",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:50.529097",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:50.629296",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:50.729881",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:50.830561",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:50.931078",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:51.031274",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:51.131529",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:51.231828",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:51.332396",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:51.432982",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:51.533706",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:51.634562",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:51.735157",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:51.835716",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:51.936220",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:52.036789",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:52.137360",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:52.237772",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:52.337984",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:52.438208",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:52.538794",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:52.639299",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:52.739790",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:52.839904",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:52.940142",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:53.040717",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:53.141273",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:53.241883",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:53.342403",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:53.443236",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:53.543777",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:53.644283",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:53.744559",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:53.845102",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:53.945649",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:54.046256",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:54.146386",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:54.246875",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:54.347358",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:54.447869",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:54.548381",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:54.648489",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:54.748939",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:54.849498",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:54.949731",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:55.050308",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:55.150556",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:55.251192",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:55.351545",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:55.451839",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:55.552314",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:55.652845",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:55.753045",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:55.853351",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:55.953940",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:56.054393",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:56.154711",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:56.255078",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:56.355996",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:56.456449",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:56.557038",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:56.658052",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:56.758608",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:56.858850",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:56.959121",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:57.059673",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:57.160116",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:57.260477",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:57.360997",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:57.461279",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:57.561736",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:57.662158",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:57.762312",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:57.863197",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:57.963545",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:58.064020",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:58.164346",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:58.264957",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:58.365207",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:58.465462",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:58.566106",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:58.667073",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:58.767368",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:58.867609",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:58.967910",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:59.068491",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:59.169022",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:59.269468",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:59.369753",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:59.469882",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:59.570351",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:59.670567",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:59.771032",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:59.871230",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:15:59.971401",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:00.071744",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:00.172002",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:00.272513",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:00.373036",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:00.473568",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:00.574439",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:00.675044",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:00.775197",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:00.875454",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:00.976013",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:01.076184",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:01.176764",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:01.277198",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:01.377376",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:01.478261",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:01.578605",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:01.679031",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:01.779741",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:01.880519",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:01.981299",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:02.082256",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:02.183351",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:02.283697",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:02.384238",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:02.484757",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:02.585394",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:02.685633",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:02.786229",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:02.886624",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:02.987282",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    },
+    {
+      "timestamp": "2025-09-08T20:16:03.087748",
+      "reason": "Persistent posture issues",
+      "original_type": "Focused Attention Meditation",
+      "action": "No adaptation implemented"
+    }
+  ],
+  "data_points": 100
+}
