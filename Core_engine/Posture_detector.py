@@ -204,6 +204,57 @@ def save_json(path: Path, data: Any) -> None:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
+# Add these methods to the PostureDetector class in Core_engine/Posture_detector.py
+# Around line 200+ (after existing methods)
+
+def _fallback_posture_detection(self, frame):
+    """Fallback when MediaPipe fails"""
+    # Simple motion-based posture detection
+    if hasattr(self, 'prev_frame'):
+        # Calculate frame difference
+        diff = cv2.absdiff(frame, self.prev_frame)
+        movement = np.mean(diff)
+        
+        # High movement = poor posture stability
+        stability_score = max(0.0, 1.0 - movement / 50.0)
+        
+        # Simple brightness check for head position
+        top_region = frame[:frame.shape[0]//3, :]
+        brightness = np.mean(top_region)
+        head_score = 0.7 if 50 < brightness < 200 else 0.3
+        
+        combined_score = (stability_score + head_score) / 2.0
+        self.prev_frame = frame.copy()
+        
+        return {
+            'posture_score': combined_score,
+            'debug': {
+                'method': 'fallback',
+                'movement': float(movement),
+                'brightness': float(brightness)
+            }
+        }
+    else:
+        self.prev_frame = frame.copy()
+        return {'posture_score': 0.5, 'debug': {'method': 'fallback_init'}}
+
+def process_live_frame(self, frame):
+    """Process live camera frame with fallback handling"""
+    try:
+        # Try MediaPipe first
+        if self.pose is not None:
+            # Process through vision pipeline
+            # This should integrate with your vision encoder
+            pass
+        else:
+            # Use fallback method
+            return self._fallback_posture_detection(frame)
+    except Exception as e:
+        print(f"Live frame processing error: {e}")
+        return self._fallback_posture_detection(frame)
+
+
+
 # ---------- CLI ----------
 def main():
     parser = argparse.ArgumentParser(description="Posture Detection Model (PDM)")

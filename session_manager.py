@@ -445,23 +445,43 @@ class LiveSession:
         # Adaptation check
         self._check_adaptation_needs()
     
+    # In session_manager.py - Replace the _process_posture_data method:
+
+    # In session_manager.py - around line 400-430
     def _process_posture_data(self, data: RealTimeData):
-        """Process posture detection data"""
+        """Process posture detection data - CORRECTED VERSION"""
         try:
-            # Use posture detector to analyze frame
-            frame_result = self.manager.posture_detector.process_record({
-                "embeddings": {"pose": data.video_frame.flatten().tolist()[:23] if data.video_frame.size >= 23 else [0.0]*23}
-            })
+            if data.video_frame is None:
+                return
+                
+            # Add vision encoder if not already present
+            if not hasattr(self, 'vision_encoder'):
+                from Encoders.vision_encoder import VisionEncoder
+                self.vision_encoder = VisionEncoder(use_torch=False)
+                
+            # Process frame through vision encoder first
+            vision_result = self.vision_encoder.process_frame(data.video_frame)
             
-            posture_score = frame_result.get("posture_score", 0.5)
-            self.posture_scores.append(posture_score)
-            
-            # Update data with posture score
-            data.posture_score = posture_score
-            
+            if vision_result['pose_detected']:
+                # Now use proper pose embeddings
+                record = {
+                    "embeddings": {"pose": vision_result['pose_embedding']}
+                }
+                
+                frame_result = self.manager.posture_detector.process_record(record)
+                posture_score = frame_result.get("posture_score", 0.5)
+                
+                self.posture_scores.append(posture_score)
+                data.posture_score = posture_score
+            else:
+                # Handle case when pose is not detected
+                print("nope")
+                
         except Exception as e:
             self.manager._log(f"Posture processing error: {e}", "error")
-    
+            print("nope")
+
+
     def _process_audio_data(self, data: RealTimeData):
         """Process audio data"""
         # Placeholder for audio processing

@@ -1,0 +1,17 @@
+{
+  "config": {
+    "session_id": "live_session_1757694696",
+    "user_id": "live_user",
+    "meditation_type": "mindfulness",
+    "planned_duration": 600,
+    "enable_posture_detection": true,
+    "enable_audio_feedback": true,
+    "posture_correction_interval": 20.0,
+    "quality_check_interval": 10.0,
+    "adaptation_sensitivity": 0.7,
+    "save_session_data": true
+  },
+  "posture_scores": [],
+  "adaptation_history": [],
+  "data_points": 100
+}

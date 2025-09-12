@@ -1,0 +1,15 @@
+{
+  "session_id": "live_session_1757694696",
+  "start_time": "2025-09-12 22:01:36.446965",
+  "end_time": "2025-09-12 22:02:48.071380",
+  "duration": 71.624415,
+  "planned_duration": 600,
+  "completion_rate": 0.119374025,
+  "average_posture_score": 0.0,
+  "posture_corrections_given": 0,
+  "engagement_score": 0.7,
+  "user_rating": 4.0,
+  "meditation_type": "mindfulness",
+  "interruptions": 0,
+  "quality_issues": []
+}
