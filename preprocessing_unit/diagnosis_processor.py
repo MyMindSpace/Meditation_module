@@ -15,8 +15,8 @@ from typing import Any, Dict, List
 # Output: Cleaned, tokenized, and engineered diagnosis data (diagnosis_processed.json)
 
 
-DEFAULT_INPUT_FILE = "diagnosis_data.json"
-DEFAULT_OUTPUT_FILE = "diagnosis_processed.json"
+DEFAULT_INPUT_FILE = "preprocess_input/diagnosis_data.json"
+DEFAULT_OUTPUT_FILE = "preprocess_output/diagnosis_processed.json"
 
 
 STOPWORDS = {

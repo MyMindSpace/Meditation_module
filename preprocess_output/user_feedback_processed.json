@@ -1,4 +1,71 @@
 {
-    "user_id": "test_user_1",
-    "feedback": "I'm feeling very stressed and anxious today. I also have some difficulty focusing."
+  "generatedAt": "2025-09-13T18:40:27.088318Z",
+  "summary": {
+    "totalUsers": 1,
+    "totalSessions": 1,
+    "overallAvgRating": 4.0
+  },
+  "overall": {
+    "timeSeriesDaily": [
+      {
+        "date": "2025-09-06",
+        "count": 1,
+        "avgRating": 4.0
+      }
+    ]
+  },
+  "perUser": {
+    "test_user_1": {
+      "sessions": 1,
+      "firstFeedback": "2025-09-06T18:30:00+00:00",
+      "lastFeedback": "2025-09-06T18:30:00+00:00",
+      "recentFeedback": [
+        {
+          "timestamp": "2025-09-06T18:30:00+00:00",
+          "rating": 4,
+          "feedbackText": "Felt anxious but the breathing helped. Would like more grounding."
+        }
+      ],
+      "avgRating": 4.0,
+      "minRating": 4,
+      "maxRating": 4,
+      "topKeywords": [
+        {
+          "token": "anxious",
+          "count": 1
+        },
+        {
+          "token": "breathing",
+          "count": 1
+        },
+        {
+          "token": "felt",
+          "count": 1
+        },
+        {
+          "token": "grounding",
+          "count": 1
+        },
+        {
+          "token": "helped",
+          "count": 1
+        },
+        {
+          "token": "like",
+          "count": 1
+        },
+        {
+          "token": "more",
+          "count": 1
+        }
+      ],
+      "timeSeriesDaily": [
+        {
+          "date": "2025-09-06",
+          "count": 1,
+          "avgRating": 4.0
+        }
+      ]
+    }
+  }
 }

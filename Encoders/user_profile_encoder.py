@@ -9,6 +9,37 @@ from datetime import datetime, timezone
 
 
 class UserProfileEncoder:
+    def encode_feedback(self, feedback: Dict[str, Any], dim: int = 32) -> np.ndarray:
+        """
+        Encode feedback into a fixed-size vector.
+        Supports numeric ratings, sentiment, and hash-based embedding for text.
+        """
+        vec = np.zeros(dim, dtype=np.float32)
+        if not isinstance(feedback, dict):
+            return vec
+        # Numeric features
+        rating = feedback.get("rating")
+        sentiment = feedback.get("sentiment")
+        if rating is not None:
+            try:
+                vec[0] = float(rating)
+            except Exception:
+                pass
+        if sentiment is not None:
+            try:
+                vec[1] = float(sentiment)
+            except Exception:
+                pass
+        # Text feature (hash-based)
+        text = feedback.get("text")
+        if text:
+            idx = self._stable_hash_index(text, dim)
+            vec[idx] += 1.0
+        # Normalize
+        norm = float(np.linalg.norm(vec))
+        if norm > 0:
+            vec = vec / norm
+        return vec
     """
     User Profile Encoder (UE)
 
@@ -227,12 +258,14 @@ class UserProfileEncoder:
         preferences = record.get("preferences", {}) or {}
         progress = record.get("progress", {}) or {}
         behavior = record.get("behavior", {}) or {}
+        feedback = record.get("feedback", {}) or {}
 
         pref_vec = self.encode_preferences(preferences)
         prog_vec = self.encode_progress(progress)
         beh_vec = self.encode_behavior(behavior)
+        feed_vec = self.encode_feedback(feedback)
 
-        combined = np.concatenate([pref_vec, prog_vec, beh_vec], axis=0)
+        combined = np.concatenate([pref_vec, prog_vec, beh_vec, feed_vec], axis=0)
 
         return {
             "userId": user_id,
@@ -240,18 +273,21 @@ class UserProfileEncoder:
                 "preferences": pref_vec.tolist(),
                 "progress": prog_vec.tolist(),
                 "behavior": beh_vec.tolist(),
+                "feedback": feed_vec.tolist(),
                 "combined": combined.tolist(),
             },
             "embedding_dimensions": {
                 "preferences": int(pref_vec.shape[0]),
                 "progress": int(prog_vec.shape[0]),
                 "behavior": int(beh_vec.shape[0]),
+                "feedback": int(feed_vec.shape[0]),
                 "combined": int(combined.shape[0]),
             },
             "features": {
                 "preferences": preferences,
                 "progress": progress,
                 "behavior": behavior,
+                "feedback": feedback,
             }
         }
 
@@ -351,9 +387,9 @@ def try_aggregate_from_jsons(json_paths: List[Path]) -> List[Dict[str, Any]]:
 # ---------- CLI ----------
 def main():
     parser = argparse.ArgumentParser(description="User Profile Encoder (UE)")
-    parser.add_argument("--input", type=str, default="preprocess_output/user_profiles_aggregated.json",
-                        help="Path to aggregated user profiles JSON (list or dict keyed by userId)")
-    parser.add_argument("--output", type=str, default="preprocess_output/user_profiles_encoded.json",
+    parser.add_argument("--input", type=str, default="preprocess_output/user_feedback_processed.json",
+                        help="Path to processed user feedback JSON (list or dict keyed by userId)")
+    parser.add_argument("--output", type=str, default="encoder_output/user_profiles_encoded.json",
                         help="Path to save encoded user profiles JSON")
     parser.add_argument("--auto-aggregate", action="store_true",
                         help="If set, attempt to discover and aggregate user profiles from preprocess_output")

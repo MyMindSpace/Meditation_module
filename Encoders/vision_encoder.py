@@ -342,7 +342,7 @@ def main():
                         help="Directory containing *_frames.npy files")
     parser.add_argument("--glob", type=str, default="*_frames.npy",
                         help="Glob pattern to match frame arrays recursively")
-    parser.add_argument("--output", type=str, default="preprocess_output/vision_encoded.json",
+    parser.add_argument("--output", type=str, default="encoder_output/vision_encoded.json",
                         help="Path to save encoded JSON results")
     parser.add_argument("--cnn-backbone", type=str, default="resnet50",
                         help="CNN backbone name (resnet50)")

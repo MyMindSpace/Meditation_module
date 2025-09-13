@@ -29,12 +29,9 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
-# Project-specific large data/outputs
-preprocess_input/
-preprocess_output/
-encoder_output/
 
 # Logs and temp
 *.log
 *.tmp
+
 

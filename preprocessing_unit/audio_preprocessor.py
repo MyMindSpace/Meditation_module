@@ -115,15 +115,16 @@ def main() -> None:
     parser.add_argument("--png", action="store_true", help="Also save mel spectrogram PNGs")
     args = parser.parse_args()
 
-    input_dir = Path(args.input)
-    output_dir = Path(args.output)
+    from pathlib import Path
+    input_dir = Path(args.input) if args.input else Path("preprocess_input/LibriSpeech")
+    output_dir = Path(args.output) if args.output else Path("preprocess_output/audio_features")
 
     if not input_dir.exists():
         raise FileNotFoundError(f"Input directory not found: {input_dir}")
 
     audio_paths = [
         Path(root) / f
-        for root, _, files in os.walk(input_dir)
+        for root, _, files in os.walk(str(input_dir))
         for f in files
         if f.lower().endswith((".wav", ".flac"))
     ]

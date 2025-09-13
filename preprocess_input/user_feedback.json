@@ -1,13 +1,10 @@
-{
-  "userId": "test_user_1",
-  "recent_sessions": [
-    {
-      "sessionId": "sess_test_001",
-      "rating": 4,
-      "feedbackText": "Felt anxious but the breathing helped. Would like more grounding.",
-      "timestamp": "2025-09-06T18:30:00Z"
-    }
-  ]
-}
+[
+  {
+    "userId": "test_user_1",
+    "rating": 4,
+    "feedbackText": "Felt anxious but the breathing helped. Would like more grounding.",
+    "timestamp": "2025-09-06T18:30:00Z"
+  }
+]
 
 

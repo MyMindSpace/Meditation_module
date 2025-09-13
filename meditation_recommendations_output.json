@@ -1,52 +1,59 @@
 {
-  "user_feedback": "I'm feeling very stressed and anxious today. I also have some difficulty focusing.",
-  "diagnosis": {
-    "user_id": "test_user_1",
-    "mental_disorder": "generalized anxiety disorder",
-    "severity": "moderate",
-    "symptoms": [
-      "excessive worry",
-      "restlessness",
-      "difficulty concentrating"
-    ]
-  },
-  "recommendations": [
+  "user_feedback": "{'generatedAt': '2025-09-13T18:15:59.675285Z', 'summary': {'totalUsers': 1, 'totalSessions': 1, 'overallAvgRating': 4.0}, 'overall': {'timeSeriesDaily': [{'date': '2025-09-06', 'count': 1, 'avgRating': 4.0}]}, 'perUser': {'test_user_1': {'sessions': 1, 'firstFeedback': '2025-09-06T18:30:00+00:00', 'lastFeedback': '2025-09-06T18:30:00+00:00', 'recentFeedback': [{'timestamp': '2025-09-06T18:30:00+00:00', 'rating': 4, 'feedbackText': 'Felt anxious but the breathing helped. Would like more grounding.'}], 'avgRating': 4.0, 'minRating': 4, 'maxRating': 4, 'topKeywords': [{'token': 'anxious', 'count': 1}, {'token': 'breathing', 'count': 1}, {'token': 'felt', 'count': 1}, {'token': 'grounding', 'count': 1}, {'token': 'helped', 'count': 1}, {'token': 'like', 'count': 1}, {'token': 'more', 'count': 1}], 'timeSeriesDaily': [{'date': '2025-09-06', 'count': 1, 'avgRating': 4.0}]}}}",
+  "diagnosis": [
     {
-      "meditation_type": "Mindfulness Meditation",
-      "confidence_score": 0.9,
-      "rationale": "Reduces physiological arousal, increases present-moment focus, interrupts rumination",
-      "selection_method": "rule_based"
-    },
-    {
-      "meditation_type": "Breathwork",
-      "confidence_score": 0.9,
-      "rationale": "Reduces physiological arousal, increases present-moment focus, interrupts rumination",
-      "selection_method": "rule_based"
-    },
-    {
-      "meditation_type": "Body Scan",
-      "confidence_score": 0.9,
-      "rationale": "Reduces physiological arousal, increases present-moment focus, interrupts rumination",
-      "selection_method": "rule_based"
-    },
-    {
-      "meditation_type": "Guided Grounding Techniques",
-      "confidence_score": 0.9,
-      "rationale": "Reduces physiological arousal, increases present-moment focus, interrupts rumination",
-      "selection_method": "rule_based"
-    },
-    {
-      "meditation_type": "Focused Attention",
-      "confidence_score": 0.9,
-      "rationale": "Reduces physiological arousal, increases present-moment focus, interrupts rumination",
-      "selection_method": "rule_based"
+      "userId": "test_user_1",
+      "original_text": "user test_user_1 symptoms: excessive worry, restlessness, difficulty concentrating, muscle tension timestamp: 2025-09-07T10:00:00Z",
+      "cleaned_text": "user test_user_1 symptoms excessive worry restlessness difficulty concentrating muscle tension timestamp 2025-09-07t10 00 00z",
+      "tokens": [
+        "user",
+        "test_user_1",
+        "symptoms",
+        "excessive",
+        "worry",
+        "restlessness",
+        "difficulty",
+        "concentrating",
+        "muscle",
+        "tension",
+        "timestamp",
+        "2025-09-07t10",
+        "00",
+        "00z"
+      ],
+      "features": {
+        "text_length": 125,
+        "token_count": 14,
+        "severity_score": 1.0,
+        "total_symptom_count": 3,
+        "mental_health_ratio": 0.07142857142857142,
+        "physical_symptoms_ratio": 0.14285714285714285,
+        "symptom_diversity": 3,
+        "has_mental_health_terms": true,
+        "has_physical_symptoms": true
+      }
     }
   ],
-  "total_recommendations_found": 9,
-  "metadata": {
-    "rule_based_matches": 12,
-    "ml_enhanced_matches": 0,
-    "hybrid_boost_applied": false,
-    "ml_enabled": false
-  }
+  "recommendations": [
+    {
+      "meditation_type": "Body Scan Meditation",
+      "confidence": 0.8,
+      "rationale": "Recommended for grounding",
+      "source": "rule_base_outcome"
+    },
+    {
+      "meditation_type": "Breath Awareness and Body Scan Meditation",
+      "confidence": 0.8,
+      "rationale": "Recommended for grounding",
+      "source": "rule_base_outcome"
+    },
+    {
+      "meditation_type": "Mindful Movement Meditation",
+      "confidence": 0.8,
+      "rationale": "Recommended for grounding",
+      "source": "rule_base_outcome"
+    }
+  ],
+  "total_candidates": 3,
+  "method": "rule_based_only"
 }

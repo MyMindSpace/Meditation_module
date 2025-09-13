@@ -1,0 +1,4 @@
+# Additional requirements for live audio/video capture
+sounddevice>=0.4.6
+soundfile>=0.12.1
+opencv-python>=4.8.0

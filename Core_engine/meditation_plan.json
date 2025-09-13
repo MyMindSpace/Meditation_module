@@ -1,0 +1,24 @@
+{
+  "recommended_meditation": "Mindfulness Meditation",
+  "confidence": 0.9,
+  "llm_used": false,
+  "plan_details": {
+    "duration_minutes": 25,
+    "duration_key": "long",
+    "difficulty": "beginner",
+    "script": "Sit in a comfortable position with your eyes closed and focus on your breath. When your mind wanders, gently bring your attention back to your breath.",
+    "steps": [
+      "Find a comfortable posture and settle for a few breaths.",
+      "Set your intention and focus on the core practice for 25 minutes.",
+      "If your attention wanders, gently bring it back without judgment.",
+      "Finish by taking a few breaths and opening your eyes slowly."
+    ]
+  },
+  "source_catalog_entry": {
+    "Name": "Mindfulness Meditation",
+    "Description": "Focuses on being present in the moment and non-judgmentally observing your thoughts and surroundings.",
+    "Duration": "10-30 minutes",
+    "Instructions": "Sit in a comfortable position with your eyes closed and focus on your breath. When your mind wanders, gently bring your attention back to your breath."
+  },
+  "generated_at": "2025-09-08 17:18:17"
+}

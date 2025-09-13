@@ -282,7 +282,7 @@ def main():
     parser = argparse.ArgumentParser(description="Diagnosis Encoder (DE) for generating numerical embeddings")
     parser.add_argument("--input", type=str, default="preprocess_output/diagnosis_processed.json", 
                        help="Path to preprocessed diagnosis data")
-    parser.add_argument("--output", type=str, default="preprocess_output/diagnosis_encoded.json",
+    parser.add_argument("--output", type=str, default="encoder_output/diagnosis_encoded.json",
                        help="Path to save encoded diagnosis data")
     parser.add_argument("--model", type=str, default="dmis-lab/biobert-base-cased-v1.1",
                        help="HuggingFace model name (BioBERT or BERT)")

@@ -5,8 +5,8 @@ from datetime import datetime
 import re
 
 
-DEFAULT_INPUT_FILE = "user_feedback.json"
-DEFAULT_OUTPUT_FILE = "user_feedback_processed.json"
+DEFAULT_INPUT_FILE = "preprocess_input/user_feedback.json"
+DEFAULT_OUTPUT_FILE = "preprocess_output/user_feedback_processed.json"
 
 
 STOPWORDS = {

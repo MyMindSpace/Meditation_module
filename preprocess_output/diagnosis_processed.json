@@ -1,6 +1,34 @@
-{
-    "user_id": "test_user_1",
-    "mental_disorder": "generalized anxiety disorder",
-    "severity": "moderate",
-    "symptoms": ["excessive worry", "restlessness", "difficulty concentrating"]
-}
+[
+  {
+    "userId": "test_user_1",
+    "original_text": "user test_user_1 symptoms: excessive worry, restlessness, difficulty concentrating, muscle tension timestamp: 2025-09-07T10:00:00Z",
+    "cleaned_text": "user test_user_1 symptoms excessive worry restlessness difficulty concentrating muscle tension timestamp 2025-09-07t10 00 00z",
+    "tokens": [
+      "user",
+      "test_user_1",
+      "symptoms",
+      "excessive",
+      "worry",
+      "restlessness",
+      "difficulty",
+      "concentrating",
+      "muscle",
+      "tension",
+      "timestamp",
+      "2025-09-07t10",
+      "00",
+      "00z"
+    ],
+    "features": {
+      "text_length": 125,
+      "token_count": 14,
+      "severity_score": 1.0,
+      "total_symptom_count": 3,
+      "mental_health_ratio": 0.07142857142857142,
+      "physical_symptoms_ratio": 0.14285714285714285,
+      "symptom_diversity": 3,
+      "has_mental_health_terms": true,
+      "has_physical_symptoms": true
+    }
+  }
+]

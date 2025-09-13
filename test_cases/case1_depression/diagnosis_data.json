@@ -1,0 +1,16 @@
+[
+  {
+    "userId": "test_user_depression",
+    "mental_disorder": "major depressive disorder",
+    "severity": "moderate to severe",
+    "symptoms": [
+      "persistent sadness",
+      "loss of interest",
+      "fatigue",
+      "feelings of worthlessness",
+      "difficulty concentrating",
+      "sleep disturbances"
+    ],
+    "timestamp": "2025-09-13T09:00:00Z"
+  }
+]

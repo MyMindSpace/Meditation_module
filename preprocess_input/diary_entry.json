@@ -1,9 +1,7 @@
-{
-  "userId": "test_user_1",
-  "date": "2025-09-07",
-  "title": "Why I want to meditate today",
-  "entry": "I woke up with a tight chest and racing thoughts about work. I want to calm my mind and feel grounded before my meetings. I also want to build consistency to handle stress better.",
-  "tags": ["stress", "anxiety", "grounding", "consistency"],
-  "intent": "calm and grounding before work"
-}
-
+[
+  {
+    "user_id": "user_1",
+    "timestamp": "2025-09-14T00:10:26.949035",
+    "entry": "\\n"
+  }
+]

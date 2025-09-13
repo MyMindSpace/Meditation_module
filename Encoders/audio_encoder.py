@@ -300,7 +300,7 @@ def main():
                         help="Directory containing MFCC .npy files")
     parser.add_argument("--glob", type=str, default="*_mfcc.npy",
                         help="Glob pattern to match MFCC files recursively")
-    parser.add_argument("--output", type=str, default="preprocess_output/audio_encoded.json",
+    parser.add_argument("--output", type=str, default="encoder_output/audio_encoded.json",
                         help="Path to save encoded JSON results")
     parser.add_argument("--target-mfcc-dim", type=int, default=20,
                         help="Number of MFCC coefficients to use (trim/pad)")

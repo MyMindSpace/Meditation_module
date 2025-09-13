@@ -141,8 +141,8 @@ def process_video(
 
 def main():
     parser = argparse.ArgumentParser(description="Video Preprocessor (VP) for frame extraction, resizing, normalization")
-    parser.add_argument("--input", type=str, default=".", help="Input folder containing video files (default: current directory)")
-    parser.add_argument("--output", type=str, default="video_frames", help="Output folder for processed frames")
+    parser.add_argument("--input", type=str, default="preprocess_input", help="Input folder containing video files")
+    parser.add_argument("--output", type=str, default="preprocess_output/video_frames", help="Output folder for processed frames")
     parser.add_argument("--size", type=int, nargs=2, default=[224, 224], help="Target frame size (width height)")
     parser.add_argument("--fps", type=float, help="Target FPS for frame sampling (default: use original FPS)")
     parser.add_argument("--max-frames", type=int, help="Maximum number of frames to extract per video")

@@ -237,4 +237,230 @@ Repository for all data used by the system.
   - **Processing**: N/A
   - **Output**: Stored user data (session history, preferences, feedback)
 
+---
 
+## 🚀 Meditation Module Workflow & Usage Guide
+
+### Overview
+The Meditation Module is a complete AI-powered system that captures live audio/video input, processes user data, and generates personalized meditation recommendations with TTS-ready scripts.
+
+### 📋 System Requirements
+- **Python 3.11+**
+- **Audio/Video Hardware**: Microphone and camera for live capture
+- **Dependencies**: See installation section below
+
+### 🔧 Installation & Setup
+
+#### 1. Install Core Dependencies
+```bash
+pip install librosa soundfile opencv-python transformers xgboost joblib pandas numpy matplotlib
+```
+
+#### 2. Install Live Capture Dependencies
+```bash
+python setup_live_capture.py
+# OR manually:
+pip install sounddevice soundfile opencv-python
+```
+
+#### 3. Setup API Keys (Optional - for advanced script generation)
+- Get Gemini API key from https://makersuite.google.com/app/apikey
+- Edit `Core_engine/meditation_script_generator.py` and add your key
+
+### 🎯 Quick Start - Live Meditation Session
+
+#### Option 1: Complete Interactive Flow
+```bash
+python run_live_pipeline.py
+```
+**What it does:**
+1. 🎙️ Captures live audio from microphone
+2. 🎥 Captures live video from camera 
+3. 📝 Prompts for diary entry
+4. 🔄 Processes all data through AI pipeline
+5. 🧘 Generates personalized meditation script
+
+#### Option 2: Manual Capture + Processing
+```bash
+# Step 1: Capture live audio/video
+python live_capture.py --mode both --duration 30 --create-librispeech
+
+# Step 2: Run pipeline
+python run_full_pipeline.py
+```
+
+#### Option 3: Using Existing Files
+```bash
+# Place your files in preprocess_input/ and run:
+python run_full_pipeline.py
+```
+
+### 📊 Detailed Workflow
+
+#### Phase 1: Data Input & Capture
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│  Live Audio     │    │   Live Video     │    │  Diary Entry    │
+│  (Microphone)   │    │   (Camera)       │    │  (Text Input)   │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+         │                       │                       │
+         ▼                       ▼                       ▼
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│ .wav files in   │    │ .mp4 files in    │    │ .json files in  │
+│ LibriSpeech     │    │ preprocess_input │    │ preprocess_input│
+│ structure       │    │                  │    │                 │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+```
+
+#### Phase 2: Preprocessing
+```
+Audio Input → Audio Preprocessor → MFCC Features, Spectrograms
+Video Input → Video Preprocessor → Frame Extraction, Pose Analysis  
+Diary Entry → User Preprocessor  → Text Analysis, Sentiment
+Diagnosis   → Diagnosis Processor → Symptom Analysis, Medical NLP
+```
+
+#### Phase 3: Feature Encoding
+```
+Audio Features    → Audio Encoder      → Audio Embeddings
+Video Frames      → Vision Encoder     → Posture Embeddings
+User Feedback     → User Profile Encoder → User Embeddings
+Diagnosis Data    → Diagnosis Encoder  → Medical Embeddings
+```
+
+#### Phase 4: AI Processing & Fusion
+```
+All Embeddings → Fusion Module → Combined Analysis
+              → Decision Manager → Rule-based + ML Decisions
+              → Quality Monitor → Confidence Scoring
+```
+
+#### Phase 5: Meditation Selection & Script Generation
+```
+Fused Data → Meditation Selector → Personalized Recommendations
+          → Script Generator → TTS-Ready Meditation Script
+```
+
+### 📁 File Structure & Outputs
+
+#### Input Files (preprocess_input/)
+```
+preprocess_input/
+├── LibriSpeech_Live_TIMESTAMP/     # Live captured audio
+├── live_video_TIMESTAMP.mp4       # Live captured video
+├── diary_entry.json               # User diary/intent
+├── diagnosis_data.json            # Medical diagnosis (optional)
+└── user_feedback.json             # Historical feedback (optional)
+```
+
+#### Output Files
+```
+meditation_recommendations_output.json           # Top meditation recommendations
+Core_engine/generated_meditation_script.json    # Complete TTS-ready script
+preprocess_output/                               # Intermediate processing files
+encoder_output/                                  # AI embeddings and features
+```
+
+### 🎨 Usage Examples
+
+#### Example 1: Anxiety Relief Session
+```bash
+python run_live_pipeline.py
+# Choose: Audio + Video (30 seconds)
+# Diary: "Feeling anxious about work presentation tomorrow"
+# Output: Breathing meditation with grounding techniques
+```
+
+#### Example 2: Sleep Preparation
+```bash
+python live_capture.py --mode audio --duration 60
+# Diary: "Having trouble sleeping, mind is racing"
+# Output: Yoga Nidra or body scan meditation
+```
+
+#### Example 3: Focus Enhancement
+```bash
+python run_live_pipeline.py
+# Diary: "Need to improve concentration for studying"
+# Output: Focused attention or mantra meditation
+```
+
+### 🔧 Advanced Configuration
+
+#### Customize Capture Settings
+```bash
+# List available devices
+python live_capture.py --list-devices
+
+# Use specific audio/video device
+python live_capture.py --audio-device 1 --video-device 0 --duration 45
+
+# Audio only with custom duration
+python live_capture.py --mode audio --duration 120
+```
+
+#### Debug Pipeline Steps
+```bash
+# Run individual components
+python preprocessing_unit/audio_preprocessor.py --input [path] --output [path]
+python Encoders/audio_encoder.py --input [path] --output [path]
+python Core_engine/meditation_selector.py --rule-only
+```
+
+### 📈 Output Format
+
+#### Meditation Recommendations (JSON)
+```json
+{
+  "recommendations": [
+    {
+      "meditation_type": "Mindful Breathing Meditation",
+      "confidence": 0.92,
+      "rationale": "Recommended for anxiety and stress relief",
+      "source": "rule_base_disorder"
+    }
+  ],
+  "method": "hybrid"
+}
+```
+
+#### Generated Script (JSON)
+```json
+{
+  "meditation_type": "Body Scan Meditation",
+  "instructions": "Step-by-step guidance...",
+  "script": "Complete TTS-ready meditation narration...",
+  "duration_minutes": "8-10",
+  "format": "TTS-ready"
+}
+```
+
+### 🐛 Troubleshooting
+
+#### Common Issues
+1. **Audio/Video Capture Fails**
+   - Check device permissions
+   - Run `python live_capture.py --list-devices`
+   - Try different device indices
+
+2. **Pipeline Timeout**
+   - Large audio/video files take longer to process
+   - Default timeout is 10 minutes
+   - Check terminal output for specific errors
+
+3. **Missing Dependencies**
+   - Run `python setup_live_capture.py`
+   - Install missing packages individually
+
+4. **Script Generation Fails**
+   - Check Gemini API key in `meditation_script_generator.py`
+   - Verify internet connection
+   - Check pandas/numpy compatibility
+
+### 🎯 Next Steps After Generation
+1. **Review** generated meditation recommendations
+2. **Use** the TTS-ready script with your preferred text-to-speech system
+3. **Practice** the recommended meditation
+4. **Provide feedback** to improve future recommendations
+
+---
