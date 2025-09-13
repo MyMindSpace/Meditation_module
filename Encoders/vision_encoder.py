@@ -322,6 +322,25 @@ class VisionEncoder:
             },
         }
 
+    # Add to your VisionEncoder class
+    def detect_meditation_posture(self, frame):
+        """Enhanced posture detection for meditation"""
+        
+        # Current face landmarks + body pose detection
+        pose_landmarks = self.mp_pose.process(frame)
+        face_landmarks = self.mp_face_mesh.process(frame)
+        
+        posture_metrics = {
+            'head_alignment': self._calculate_head_alignment(face_landmarks),
+            'shoulder_level': self._check_shoulder_alignment(pose_landmarks),
+            'spine_straightness': self._assess_spine_curvature(pose_landmarks),
+            'sitting_stability': self._check_base_stability(pose_landmarks),
+            'hand_position': self._verify_hand_placement(pose_landmarks)
+        }
+        
+        return self._compute_overall_posture_score(posture_metrics)
+
+
 
 # ---------- CLI Utilities ----------
 def find_frame_arrays(root: Path, pattern: str = "*_frames.npy") -> List[Path]:
