@@ -48,11 +48,13 @@ class VisionEncoder:
                  cnn_backbone: str = "resnet50",
                  frame_size: int = 224,
                  max_frames: int = 32,
-                 device: Optional[str] = None):
+                 device: Optional[str] = None,
+                 include_live_posture: bool = False):
         self.cnn_backbone = cnn_backbone
         self.frame_size = int(frame_size)
         self.max_frames = int(max_frames)
         self.device = self._resolve_device(device) if TORCH_AVAILABLE else None
+        self.include_live_posture = include_live_posture
 
         self.cnn: Optional[nn.Module] = None
         self.cnn_out_dim: int = 0
@@ -118,6 +120,49 @@ class VisionEncoder:
             transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                  std=[0.229, 0.224, 0.225]),
         ])
+
+    # ---------- Live Posture Data Loading ----------
+    def load_live_posture_data(self, posture_scores_path: Path) -> Dict[str, Any]:
+        """Load live posture scores from JSON file."""
+        if not posture_scores_path.exists():
+            return {
+                "sessions_count": 0,
+                "has_live_data": False,
+                "latest_score": 0.0,
+                "average_score": 0.0,
+                "scores": []
+            }
+        
+        try:
+            with posture_scores_path.open("r", encoding="utf-8") as f:
+                posture_data = json.load(f)
+            
+            if not posture_data:
+                return {
+                    "sessions_count": 0,
+                    "has_live_data": False,
+                    "latest_score": 0.0,
+                    "average_score": 0.0,
+                    "scores": []
+                }
+            
+            scores = [session["posture_score"] for session in posture_data]
+            return {
+                "sessions_count": len(posture_data),
+                "has_live_data": True,
+                "latest_score": scores[-1] if scores else 0.0,
+                "average_score": float(np.mean(scores)) if scores else 0.0,
+                "scores": scores
+            }
+        except Exception as e:
+            print(f"Warning: Could not load posture data from {posture_scores_path}: {e}")
+            return {
+                "sessions_count": 0,
+                "has_live_data": False,
+                "latest_score": 0.0,
+                "average_score": 0.0,
+                "scores": []
+            }
 
     # ---------- Loading Frames ----------
     def load_frames(self, path: Path) -> np.ndarray:
@@ -285,7 +330,7 @@ class VisionEncoder:
         return PoseStats(True, int(F.shape[0]), int(frames.shape[0]), emb.astype(np.float32))
 
     # ---------- Public API ----------
-    def process_video_frames_file(self, file_path: Path) -> Dict[str, Any]:
+    def process_video_frames_file(self, file_path: Path, posture_scores_path: Optional[Path] = None) -> Dict[str, Any]:
         frames = self.load_frames(file_path)  # [T, H, W, 3] in [0,1]
         cnn_vec = self.extract_cnn_features(frames)
         pose = self.extract_pose_embedding(frames)
@@ -294,9 +339,30 @@ class VisionEncoder:
         visual_vec = cnn_vec
         pose_vec = pose.embedding
 
-        combined = np.concatenate([visual_vec.astype(np.float32), pose_vec.astype(np.float32)], axis=0)
+        # Handle live posture data if requested
+        live_posture_data = {}
+        if self.include_live_posture and posture_scores_path:
+            live_posture_data = self.load_live_posture_data(posture_scores_path)
+            # Create live posture embedding from scores
+            if live_posture_data["has_live_data"]:
+                live_posture_vec = np.array([
+                    live_posture_data["latest_score"],
+                    live_posture_data["average_score"],
+                    float(live_posture_data["sessions_count"]) / 10.0,  # Normalize session count
+                    np.std(live_posture_data["scores"]) if len(live_posture_data["scores"]) > 1 else 0.0
+                ], dtype=np.float32)
+            else:
+                live_posture_vec = np.zeros(4, dtype=np.float32)
+        else:
+            live_posture_vec = np.zeros(4, dtype=np.float32)
 
-        return {
+        # Combine all embeddings
+        if self.include_live_posture:
+            combined = np.concatenate([visual_vec.astype(np.float32), pose_vec.astype(np.float32), live_posture_vec], axis=0)
+        else:
+            combined = np.concatenate([visual_vec.astype(np.float32), pose_vec.astype(np.float32)], axis=0)
+
+        result = {
             "file": str(file_path).replace("\\", "/"),
             "features": {
                 "pose": {
@@ -322,6 +388,14 @@ class VisionEncoder:
             },
         }
 
+        # Add live posture features if enabled
+        if self.include_live_posture:
+            result["features"]["live_posture"] = live_posture_data
+            result["embeddings"]["live_posture"] = live_posture_vec.tolist()
+            result["embedding_dimensions"]["live_posture"] = int(live_posture_vec.shape[0])
+
+        return result
+
 
 # ---------- CLI Utilities ----------
 def find_frame_arrays(root: Path, pattern: str = "*_frames.npy") -> List[Path]:
@@ -338,8 +412,10 @@ def save_json(output_path: Path, data: Any) -> None:
 
 def main():
     parser = argparse.ArgumentParser(description="Vision Encoder (VE)")
-    parser.add_argument("--input-dir", type=str, default="preprocess_output/video_frames",
+    parser.add_argument("--input", type=str, default="preprocess_output/video_frames",
                         help="Directory containing *_frames.npy files")
+    parser.add_argument("--input-dir", type=str, default="preprocess_output/video_frames",
+                        help="Directory containing *_frames.npy files (deprecated, use --input)")
     parser.add_argument("--glob", type=str, default="*_frames.npy",
                         help="Glob pattern to match frame arrays recursively")
     parser.add_argument("--output", type=str, default="encoder_output/vision_encoded.json",
@@ -350,21 +426,32 @@ def main():
                         help="Resize frames for CNN input")
     parser.add_argument("--max-frames", type=int, default=32,
                         help="Max frames to sample per video")
+    parser.add_argument("--include-live-posture", action="store_true",
+                        help="Include live posture data from posture_scores.json")
+    parser.add_argument("--posture-scores", type=str, default="preprocess_output/posture_scores.json",
+                        help="Path to posture scores JSON file")
     args = parser.parse_args()
+
+    # Use --input if provided, otherwise fall back to --input-dir
+    input_dir = args.input if args.input != "preprocess_output/video_frames" else args.input_dir
 
     encoder = VisionEncoder(cnn_backbone=args.cnn_backbone,
                             frame_size=args.frame_size,
-                            max_frames=args.max_frames)
+                            max_frames=args.max_frames,
+                            include_live_posture=args.include_live_posture)
 
-    input_root = Path(args.input_dir)
+    input_root = Path(input_dir)
     files = find_frame_arrays(input_root, args.glob)
     if not files:
         raise FileNotFoundError(f"No files matched in {input_root} with pattern {args.glob}")
 
+    # Load posture scores if requested
+    posture_scores_path = Path(args.posture_scores) if args.include_live_posture else None
+
     results: List[Dict[str, Any]] = []
     for i, f in enumerate(files):
         try:
-            result = encoder.process_video_frames_file(f)
+            result = encoder.process_video_frames_file(f, posture_scores_path)
             results.append(result)
         except Exception as e:
             print(f"Error processing {f}: {e}")
@@ -378,6 +465,13 @@ def main():
         print("\nEmbedding dimensions:")
         for k, v in dims.items():
             print(f"  {k}: {v}")
+        
+        if args.include_live_posture and "live_posture" in results[0]["features"]:
+            live_data = results[0]["features"]["live_posture"]
+            print(f"\nLive posture data:")
+            print(f"  Sessions: {live_data['sessions_count']}")
+            print(f"  Latest score: {live_data['latest_score']:.3f}")
+            print(f"  Average score: {live_data['average_score']:.3f}")
 
 
 if __name__ == "__main__":

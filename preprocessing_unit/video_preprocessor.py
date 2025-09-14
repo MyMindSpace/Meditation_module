@@ -94,6 +94,7 @@ def process_video(
     target_fps: float = None,
     max_frames: int = None,
     save_individual: bool = False,
+    posture_aware: bool = True,
 ) -> None:
     """
     Process a single video file.
@@ -105,8 +106,18 @@ def process_video(
         target_fps: Target FPS for frame sampling
         max_frames: Maximum frames to extract
         save_individual: Whether to save individual frame files
+        posture_aware: Whether to optimize for posture detection
     """
     print(f"Processing: {video_path.name}")
+    
+    # Posture-aware settings
+    if posture_aware:
+        # For posture detection, we want higher FPS and more frames
+        if not target_fps:
+            target_fps = 15.0  # Higher FPS for better posture tracking
+        if not max_frames:
+            max_frames = 150  # More frames for posture analysis
+        print(f"  Posture-aware processing: FPS={target_fps}, max_frames={max_frames}")
     
     # Extract frames
     frames = extract_frames(video_path, target_fps=target_fps, max_frames=max_frames)
@@ -136,7 +147,26 @@ def process_video(
     output_path = output_dir / f"{video_path.stem}_frames.npy"
     np.save(output_path, frames_array)
     
+    # Save metadata for posture-aware processing
+    metadata = {
+        "video_path": str(video_path),
+        "total_frames": len(processed_frames),
+        "frame_shape": frames_array.shape,
+        "target_fps": target_fps,
+        "posture_aware": posture_aware,
+        "processing_timestamp": str(Path().cwd()),
+        "is_live_meditation": "live_video" in video_path.name.lower()
+    }
+    
+    metadata_path = output_dir / f"{video_path.stem}_metadata.json"
+    import json
+    with open(metadata_path, 'w') as f:
+        json.dump(metadata, f, indent=2)
+    
     print(f"  Extracted {len(processed_frames)} frames, saved to {output_path}")
+    print(f"  Metadata saved to {metadata_path}")
+    if metadata["is_live_meditation"]:
+        print(f"  ✓ Detected live meditation video - optimized for posture analysis")
 
 
 def main():
@@ -147,6 +177,7 @@ def main():
     parser.add_argument("--fps", type=float, help="Target FPS for frame sampling (default: use original FPS)")
     parser.add_argument("--max-frames", type=int, help="Maximum number of frames to extract per video")
     parser.add_argument("--individual", action="store_true", help="Save individual frame files in addition to combined array")
+    parser.add_argument("--posture-aware", action="store_true", default=True, help="Optimize processing for posture detection (higher FPS, more frames)")
     args = parser.parse_args()
     
     input_dir = Path(args.input)
@@ -184,6 +215,7 @@ def main():
                 target_fps=args.fps,
                 max_frames=args.max_frames,
                 save_individual=args.individual,
+                posture_aware=args.posture_aware,
             )
         except Exception as e:
             print(f"  Error processing {video_path.name}: {e}")

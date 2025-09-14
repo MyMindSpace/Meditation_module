@@ -85,13 +85,30 @@ run_script("preprocessing_unit/user_preprocessor.py", ["--input", DIARY_INPUT, "
 # 2. Other preprocessors
 run_script("preprocessing_unit/audio_preprocessor.py", ["--input", AUDIO_INPUT, "--output", os.path.join(PREPROCESS_OUTPUT, "audio_features")])
 run_script("preprocessing_unit/diagnosis_processor.py", ["--input", DIAGNOSIS_INPUT, "--output", os.path.join(PREPROCESS_OUTPUT, "diagnosis_processed.json")])
-run_script("preprocessing_unit/video_preprocessor.py", ["--input", VIDEO_INPUT, "--output", os.path.join(PREPROCESS_OUTPUT, "video_frames")])
+# Process video - handle both single files and directories
+if os.path.isfile(VIDEO_INPUT):
+    # Single video file - create temp directory structure
+    temp_video_dir = os.path.join("preprocess_input", "temp_video_dir")
+    os.makedirs(temp_video_dir, exist_ok=True)
+    
+    # Copy video file to temp directory
+    import shutil
+    temp_video_path = os.path.join(temp_video_dir, os.path.basename(VIDEO_INPUT))
+    shutil.copy2(VIDEO_INPUT, temp_video_path)
+    
+    run_script("preprocessing_unit/video_preprocessor.py", ["--input", temp_video_dir, "--output", os.path.join(PREPROCESS_OUTPUT, "video_frames")])
+    
+    # Clean up temp directory
+    shutil.rmtree(temp_video_dir, ignore_errors=True)
+else:
+    # Directory input
+    run_script("preprocessing_unit/video_preprocessor.py", ["--input", VIDEO_INPUT, "--output", os.path.join(PREPROCESS_OUTPUT, "video_frames")])
 
 # 3. Encoders
 run_script("Encoders/user_profile_encoder.py", ["--input", os.path.join(PREPROCESS_OUTPUT, "user_feedback_processed.json"), "--output", os.path.join(ENCODER_OUTPUT, "user_profiles_encoded.json")])
 run_script("Encoders/audio_encoder.py", ["--input", os.path.join(PREPROCESS_OUTPUT, "audio_features"), "--output", os.path.join(ENCODER_OUTPUT, "audio_encoded.json")])
 run_script("Encoders/diagnosis_encoder.py", ["--input", os.path.join(PREPROCESS_OUTPUT, "diagnosis_processed.json"), "--output", os.path.join(ENCODER_OUTPUT, "diagnosis_encoded.json")])
-run_script("Encoders/vision_encoder.py", ["--input", os.path.join(PREPROCESS_OUTPUT, "video_frames"), "--output", os.path.join(ENCODER_OUTPUT, "vision_encoded.json")])
+run_script("Encoders/vision_encoder.py", ["--input", os.path.join(PREPROCESS_OUTPUT, "video_frames"), "--output", os.path.join(ENCODER_OUTPUT, "vision_encoded.json"), "--include-live-posture"])
 
 # 4. Core engine modules
 run_script("Core_engine/pipeline.py")
